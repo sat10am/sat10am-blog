@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR';
     padding-top: 45px;
   }
+  .image-gallery-slide img {
+    width: 100%;
+    height: 400px;
+  }
 `;
 
 const Layout = ({ children }) => (
@@ -34,7 +38,7 @@ const Layout = ({ children }) => (
         <div
           style={{
             margin: `0 auto`,
-            maxWidth: 960,
+            maxWidth: 1000,
             padding: `0px 1.0875rem 1.45rem`,
             paddingTop: 0,
           }}

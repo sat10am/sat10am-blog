@@ -17,6 +17,18 @@ const ContentWrapper = styled.div`
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: #4b4b4b;
+    li {
+      margin-bottom: 8px;
+    }
+  }
+
+  ol {
+    list-style: decimal;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #4b4b4b;
     li {
       margin-bottom: 8px;
     }

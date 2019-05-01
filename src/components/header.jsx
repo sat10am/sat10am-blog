@@ -14,6 +14,7 @@ const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   right: 0;
+  z-index: 999;
 `;
 
 const HeaderContainer = styled.div`
@@ -81,9 +82,15 @@ const Header = ({ siteTitle }) => (
       </LogoWrapper>
       <MenuWrapper>
         <MenuList>
-          <MenuItem>Posts</MenuItem>
-          <MenuItem>Members</MenuItem>
-          <MenuItem>About</MenuItem>
+          <MenuItem>
+            <Link to="/posts">Posts</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/members">Members</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/about">About</Link>
+          </MenuItem>
         </MenuList>
       </MenuWrapper>
     </HeaderContainer>
