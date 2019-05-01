@@ -1,16 +1,19 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
+import { reset } from "styled-reset";
+import { createGlobalStyle } from "styled-components";
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import Header from "./header";
 
-import Header from "./header"
-import "./layout.css"
+const GlobalStyle = createGlobalStyle`
+  ${reset} 
+  @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+  html, body {
+    font-family: 'Noto Sans KR';
+    padding-top: 70px;
+  }
+`;
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -26,6 +29,7 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
+        <GlobalStyle />
         <div
           style={{
             margin: `0 auto`,
@@ -37,17 +41,16 @@ const Layout = ({ children }) => (
           <main>{children}</main>
           <footer>
             © {new Date().getFullYear()}, Built with
-            {` `}
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
         </div>
       </>
     )}
   />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;
