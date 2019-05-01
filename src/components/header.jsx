@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Logo from "../images/sat10am.svg";
+import Link from "./Link";
 
 const HeaderWrapper = styled.header`
   background: #ffffff;
@@ -46,6 +47,7 @@ const LogoHeading = styled.h1`
   font-weight: 100;
   margin: 0;
   color: #4b4b4b;
+  display: inline-block;
 `;
 
 const MenuWrapper = styled.div`
@@ -72,8 +74,10 @@ const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <HeaderContainer>
       <LogoWrapper>
-        <LogoImage src={Logo} alt="Logo" />
-        <LogoHeading>{siteTitle}</LogoHeading>
+        <Link to="/">
+          <LogoImage src={Logo} alt="Logo" />
+          <LogoHeading>{siteTitle}</LogoHeading>
+        </Link>
       </LogoWrapper>
       <MenuWrapper>
         <MenuList>
