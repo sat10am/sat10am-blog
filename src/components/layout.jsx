@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import { reset } from "styled-reset";
@@ -11,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
   html, body {
     font-family: 'Noto Sans KR';
-    padding-top: 70px;
+    padding-top: 45px;
   }
 `;
 
@@ -39,11 +40,8 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
         </div>
+        <Footer />
       </>
     )}
   />
