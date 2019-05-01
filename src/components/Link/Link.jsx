@@ -6,4 +6,6 @@ export default styled(Link)`
   color: #4b4b4b !important;
   text-decoration: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 `;
