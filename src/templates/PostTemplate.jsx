@@ -62,7 +62,7 @@ const PostTemplate = ({ data }) => {
         <Disqus
           identifier={id}
           title={title}
-          url={`${siteUrl}${location.pathname}`}
+          url={`${siteUrl}${window.location.pathname}`}
         />
       </Container>
     </Layout>
