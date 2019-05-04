@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
+            naverSiteVerification
           }
         }
       }
@@ -26,6 +27,7 @@ function SEO({ description, lang, meta, keywords, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const { naverSiteVerification } = site.siteMetadata;
 
   return (
     <Helmet
@@ -67,13 +69,17 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `naver-site-verification`,
+          content: naverSiteVerification,
+        },
       ]
         .concat(
           keywords.length > 0
             ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
+              name: `keywords`,
+              content: keywords.join(`, `),
+            }
             : []
         )
         .concat(meta)}
