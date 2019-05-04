@@ -29,7 +29,7 @@
     "location": "서울특별시",
     "join": "2018/08/25",
     "skill": ["C++", "Javascript"],
-    "profile": "http://github.com/phh.png"
+    "profile": "https://user-images.githubusercontent.com/25189066/57176489-b9534200-6e93-11e9-9386-5fc7f1756bfd.jpg"
   },
   {
     "name":"이장희",
@@ -45,7 +45,7 @@
     "location": "경기도 성남시",
     "join": "2018/06/30",
     "skill": ["Java", "Javascript"],
-    "profile": "http://github.com/hunter.png"
+    "profile": "http://github.com/2xel.png"
   },
   {
     "name":"임호성",
@@ -77,6 +77,6 @@
     "location": "경기도 광주시",
     "join": "2018/08/18",
     "skill": ["Typescript", "Javascript"],
-    "profile": "http://github.com/olaf.png"
+    "profile": "http://github.com/seungwoohong.png"
   }
 ]
