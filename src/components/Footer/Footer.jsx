@@ -8,10 +8,13 @@ const FooterWrapper = styled.footer`
   text-align: center;
   font-size: 12px;
   padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Footer = () => (
-  <FooterWrapper>© {new Date().getFullYear()}, Built with @y0c</FooterWrapper>
+  <FooterWrapper>© {new Date().getFullYear()}, Built with @ SAT10AM </FooterWrapper>
 );
 
 export default Footer;
