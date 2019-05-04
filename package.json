@@ -6,9 +6,12 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@rebass/grid": "^6.0.0",
+    "algoliasearch": "^3.32.1",
     "babel-plugin-styled-components": "^1.10.0",
+    "dotenv": "^8.0.0",
     "gatsby": "^2.3.34",
     "gatsby-image": "^2.0.41",
+    "gatsby-plugin-algolia": "^0.3.0",
     "gatsby-plugin-google-analytics": "^2.0.19",
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-offline": "^2.0.25",
@@ -29,6 +32,7 @@
     "react-helmet": "^5.2.0",
     "react-icons": "^3.6.1",
     "react-image-gallery": "^0.8.16",
+    "react-instantsearch-dom": "^5.5.0",
     "styled-components": "^4.2.0",
     "styled-reset": "^2.0.9",
     "styled-system": "^4.1.0"

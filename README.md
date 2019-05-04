@@ -12,6 +12,8 @@
 ## 🛠 Development Setup
 1. `git clone https://github.com/sat10am/sat10am-blog.git`
 2. `yarn` or `npm install`
+3. `cp .env.example .env`
+    1. `.env` 키에 대응되는 값은 sat10am slack 에서 확인한 뒤 작성해 주세요 
 
 ## 📦 Scripts
 * `yarn develop` - start local server
