@@ -1,13 +1,13 @@
 import Disqus from 'gatsby-plugin-disqus';
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { graphql } from "gatsby";
-import { MdAccessTime, MdRemoveRedEye } from "react-icons/md";
-import Layout from "../components/layout";
-import TagList from "../components/TagList";
-import PostContent from "../components/PostContent";
-import Container from "../components/Container";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { MdAccessTime, MdRemoveRedEye } from 'react-icons/md';
+import Layout from '../components/layout';
+import TagList from '../components/TagList';
+import PostContent from '../components/PostContent';
+import Container from '../components/Container';
 
 const PostHeading = styled.h1`
   font-size: 32px;
@@ -33,9 +33,7 @@ const PostField = styled.span`
 const PostTemplate = ({ data }) => {
   const {
     site: {
-      siteMetadata: {
-        baseURI
-      }
+      siteMetadata: { siteUrl },
     },
     markdownRemark: {
       id,
@@ -46,7 +44,7 @@ const PostTemplate = ({ data }) => {
   } = data;
   return (
     <Layout>
-      <div style={{ marginTop: "20px" }} />
+      <div style={{ marginTop: '20px' }} />
       <Container>
         <PostHeading>{title}</PostHeading>
         <Paragraph>
@@ -64,7 +62,7 @@ const PostTemplate = ({ data }) => {
         <Disqus
           identifier={id}
           title={title}
-          url={`${baseURI}${location.pathname}`}
+          url={`${siteUrl}${location.pathname}`}
         />
       </Container>
     </Layout>
@@ -75,7 +73,7 @@ export const pageQuery = graphql`
   query findPostbyPath($path: String!) {
     site {
       siteMetadata {
-        baseURI
+        siteUrl
       }
     }
     markdownRemark(frontmatter: { path: { eq: $path } }) {

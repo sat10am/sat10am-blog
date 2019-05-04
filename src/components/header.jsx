@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Logo from "../images/sat10am.svg";
-import Link from "./Link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Logo from '../images/sat10am.svg';
+import Link from './Link';
 
 const HeaderWrapper = styled.header`
   background: #ffffff;
@@ -75,21 +75,21 @@ const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <HeaderContainer>
       <LogoWrapper>
-        <Link to="/">
-          <LogoImage src={Logo} alt="Logo" />
+        <Link to='/'>
+          <LogoImage src={Logo} alt='Logo' />
           <LogoHeading>{siteTitle}</LogoHeading>
         </Link>
       </LogoWrapper>
       <MenuWrapper>
         <MenuList>
           <MenuItem>
-            <Link to="/posts">Posts</Link>
+            <Link to='/posts'>Posts</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/members">Members</Link>
+            <Link to='/members'>Members</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/about">About</Link>
+            <Link to='/about'>About</Link>
           </MenuItem>
         </MenuList>
       </MenuWrapper>
@@ -102,7 +102,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  siteTitle: "",
+  siteTitle: '',
 };
 
 export default Header;
