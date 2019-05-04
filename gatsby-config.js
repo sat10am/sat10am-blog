@@ -33,7 +33,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/contents`,
-        name: "markdown-pages",
+        name: 'markdown-pages',
       },
     },
     {
@@ -43,7 +43,7 @@ module.exports = {
           `gatsby-remark-relative-images`,
           `gatsby-remark-images`,
           {
-            resolve: "gatsby-remark-prismjs",
+            resolve: 'gatsby-remark-prismjs',
           },
         ],
       },
@@ -52,12 +52,12 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-139549818-1',
-        head: true
-      }
+        head: true,
+      },
     },
     'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
   ],
 };
