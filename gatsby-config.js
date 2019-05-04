@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `SAT10AM`,
-    siteUrl: 'https://sat10am.dev',
+    siteUrl: `https://sat10am.dev`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
     naverSiteVerification: 'b1076669177dae5b58f7fc5563e631a428968f5f',
@@ -33,7 +33,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/contents`,
-        name: "markdown-pages",
+        name: 'markdown-pages',
       },
     },
     {
@@ -43,7 +43,7 @@ module.exports = {
           `gatsby-remark-relative-images`,
           `gatsby-remark-images`,
           {
-            resolve: "gatsby-remark-prismjs",
+            resolve: 'gatsby-remark-prismjs',
           },
         ],
       },
@@ -52,12 +52,17 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-139549818-1',
-        head: true
-      }
+        head: true,
+      },
     },
-    'gatsby-plugin-sitemap',
-    'gatsby-plugin-styled-components',
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `sat10am`,
+      },
+    },
   ],
 };
