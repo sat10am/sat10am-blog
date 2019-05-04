@@ -30,9 +30,9 @@ const collapse = css`
   + ${SearchIcon} {
     color: ${(props) => props.theme.white};
   }
-  ${(props) => props.focussed && focussed}
-  margin-left: ${(props) => (props.focussed ? `-1.6em` : `-1em`)};
-  padding-left: ${(props) => (props.focussed ? `1.6em` : `1em`)};
+  ${(props) => props.focused && focussed}
+  margin-left: ${(props) => (props.focused ? `-1.6em` : `-1em`)};
+  padding-left: ${(props) => (props.focused ? `1.6em` : `1em`)};
   ::placeholder {
     color: ${(props) => props.theme.gray};
   }

@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { graphql } from "gatsby";
-import { MdAccessTime, MdRemoveRedEye } from "react-icons/md";
-import Layout from "../components/layout";
-import TagList from "../components/TagList";
-import PostContent from "../components/PostContent";
-import Container from "../components/Container";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { MdAccessTime, MdRemoveRedEye } from 'react-icons/md';
+import Layout from '../components/layout';
+import TagList from '../components/TagList';
+import PostContent from '../components/PostContent';
+import Container from '../components/Container';
 
 const PostHeading = styled.h1`
   font-size: 32px;
@@ -39,7 +39,7 @@ const PostTemplate = ({ data }) => {
   } = data;
   return (
     <Layout>
-      <div style={{ marginTop: "20px" }} />
+      <div style={{ marginTop: '20px' }} />
       <Container>
         <PostHeading>{title}</PostHeading>
         <Paragraph>

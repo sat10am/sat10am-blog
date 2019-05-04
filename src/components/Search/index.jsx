@@ -27,7 +27,7 @@ const Stats = connectStateResults(
 );
 
 export default class Search extends Component {
-  state = { query: ``, focussed: false, ref: createRef() };
+  state = { query: ``, focused: false, ref: createRef() };
   searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_SEARCH_KEY,
@@ -36,16 +36,16 @@ export default class Search extends Component {
   updateState = (state) => this.setState(state);
 
   focus = () => {
-    this.setState({ focussed: true });
+    this.setState({ focused: true });
   };
 
   disableHits = () => {
-    this.setState({ focussed: false });
+    this.setState({ focused: false });
   };
 
   handleClickOutside = (event) => {
     if (!this.state.ref.current.contains(event.target)) {
-      this.setState({ focussed: false });
+      this.setState({ focused: false });
     }
   };
 
@@ -62,7 +62,7 @@ export default class Search extends Component {
   }
 
   render() {
-    const { query, focussed, ref } = this.state;
+    const { query, focused, ref } = this.state;
     const { indices, collapse, hitsAsGrid } = this.props;
     return (
       <InstantSearch
@@ -70,10 +70,8 @@ export default class Search extends Component {
         indexName={indices[0].name}
         onSearchStateChange={this.updateState}
         root={{ Root, props: { ref } }}>
-        <Input onFocus={this.focus} {...{ collapse, focussed }} />
-        <HitsWrapper
-          show={query.length > 0 && focussed}
-          hitsAsGrid={hitsAsGrid}>
+        <Input onFocus={this.focus} {...{ collapse, focused }} />
+        <HitsWrapper show={query.length > 0 && focused} hitsAsGrid={hitsAsGrid}>
           {indices.map(({ name, title, hitComp }) => (
             <Index key={name} indexName={name}>
               <header>
