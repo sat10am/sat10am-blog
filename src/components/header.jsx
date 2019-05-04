@@ -73,7 +73,7 @@ const MenuItem = styled.li`
 `;
 
 const searchIndices = [
-  { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
   { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
 ];
 

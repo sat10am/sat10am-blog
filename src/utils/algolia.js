@@ -41,7 +41,7 @@ const flatten = (arr) =>
     ...frontmatter,
     ...rest,
   }));
-const settings = { attributesToSnippet: [`excerpt:20`] };
+const settings = { attributesToSnippet: [`excerpt:10`] };
 
 const queries = [
   {

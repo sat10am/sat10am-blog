@@ -102,13 +102,21 @@ export const HitsWrapper = styled.div`
   display: ${(props) => (props.show ? `grid` : `none`)};
   max-height: 80vh;
   overflow: scroll;
+  background-color: #fff;
   ${(props) => (props.hitsAsGrid ? grid : list)};
+  div {
+    overflow: hidden;
+    white-space: nowrap;
+  }
   * {
     margin-top: 0;
     padding: 0;
   }
   ul {
     list-style: none;
+    li:last-child {
+      margin-bottom: 1.25rem;
+    }
   }
   mark {
     color: ${(props) => props.theme.lightBlue};
@@ -117,19 +125,12 @@ export const HitsWrapper = styled.div`
   header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.3em;
+    margin-bottom: 1rem;
     h3 {
       color: ${(props) => props.theme.white};
       background: ${(props) => props.theme.gray};
-      padding: 0.1em 0.4em;
       border-radius: ${(props) => props.theme.smallBorderRadius};
     }
-  }
-  h3 {
-    margin: 0 0 0.5em;
-  }
-  h4 {
-    margin-bottom: 0.3em;
   }
 `;
 
