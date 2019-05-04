@@ -1,0 +1,82 @@
+[
+  {
+    "name":"권기웅",
+    "username": "DOONDOONY",
+    "location": "경기도 성남시",
+    "join": "2018/06/30",
+    "skill": ["Python", "Javascript"],
+    "profile": "http://github.com/DoonDoony.png"
+  },
+  {
+    "name":"고은정",
+    "username": "GODORI",
+    "location": "경기도 성남시",
+    "join": "2018/06/30",
+    "skill": ["Java", "Javascript","Python"],
+    "profile": "http://github.com/godori.png"
+  },
+  {
+    "name":"김재우",
+    "username": "WOODY",
+    "location": "경기도 수원시",
+    "join": "2018/09/20",
+    "skill": ["PHP", "Javascript"],
+    "profile": "http://github.com/jwooss.png"
+  },
+  {
+    "name":"박희환",
+    "username": "PHH",
+    "location": "서울특별시",
+    "join": "2018/08/25",
+    "skill": ["C++", "Javascript"],
+    "profile": "http://github.com/phh.png"
+  },
+  {
+    "name":"이장희",
+    "username": "YESDOING",
+    "location": "경기도 성남시",
+    "join": "2018/06/30",
+    "skill": ["Java", "Javascript", "Python"],
+    "profile": "http://github.com/yesdoing.png"
+  },
+  {
+    "name":"이재민",
+    "username": "HUNTER",
+    "location": "경기도 성남시",
+    "join": "2018/06/30",
+    "skill": ["Java", "Javascript"],
+    "profile": "http://github.com/hunter.png"
+  },
+  {
+    "name":"임호성",
+    "username": "y0c",
+    "location": "경기도 수원시",
+    "join": "2019/01/25",
+    "skill": ["Javascript", "Spring", "Node.js"],
+    "profile": "http://github.com/y0c.png"
+  },
+  {
+    "name":"이희찬",
+    "username": "DAIL",
+    "location": "경기도 수원시",
+    "join": "2018/07/20",
+    "skill": ["Typescript", "Javascript"],
+    "profile": "http://github.com/amorfati0310.png"
+  },
+  {
+    "name":"정성엽",
+    "username": "UBI",
+    "location": "경기도 성남시",
+    "join": "2018/07/20",
+    "skill": ["Java", "Javascript"],
+    "profile": "http://github.com/ubi.png"
+  },
+  {
+    "name":"홍승우",
+    "username": "OLAF",
+    "location": "경기도 광주시",
+    "join": "2018/08/18",
+    "skill": ["Typescript", "Javascript"],
+    "profile": "http://github.com/olaf.png"
+  }
+]
