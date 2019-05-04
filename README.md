@@ -1,2 +1,0 @@
-# SAT10AM Blog
-
