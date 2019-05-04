@@ -2,6 +2,8 @@
 
 # SAT10AM
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5f29c6ee-52ba-4033-8086-7b901f878aca/deploy-status)](https://app.netlify.com/sites/adoring-euler-5b0ad8/deploys)
+
 ## 👀 Intro
 **SAT10AM 은 매주 토요일 오전 10시**에 웹 개발에 관련된 주제로
 
