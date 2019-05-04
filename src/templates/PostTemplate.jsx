@@ -1,3 +1,4 @@
+import Disqus from 'gatsby-plugin-disqus';
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -31,7 +32,13 @@ const PostField = styled.span`
 
 const PostTemplate = ({ data }) => {
   const {
+    site: {
+      siteMetadata: {
+        baseURI
+      }
+    },
     markdownRemark: {
+      id,
       html,
       timeToRead,
       frontmatter: { title, tags, date },
@@ -54,6 +61,11 @@ const PostTemplate = ({ data }) => {
         </Paragraph>
         <PostContent html={html} />
         <TagList tags={tags} />
+        <Disqus
+          identifier={id}
+          title={title}
+          url={`${baseURI}${location.pathname}`}
+        />
       </Container>
     </Layout>
   );
@@ -61,6 +73,11 @@ const PostTemplate = ({ data }) => {
 
 export const pageQuery = graphql`
   query findPostbyPath($path: String!) {
+    site {
+      siteMetadata {
+        baseURI
+      }
+    }
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       id
       html

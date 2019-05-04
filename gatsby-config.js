@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    baseURI: `https://sat10am.dev`,
     title: `SAT10AM`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
@@ -32,7 +33,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/contents`,
-        name: "markdown-pages",
+        name: 'markdown-pages',
       },
     },
     {
@@ -42,7 +43,7 @@ module.exports = {
           `gatsby-remark-relative-images`,
           `gatsby-remark-images`,
           {
-            resolve: "gatsby-remark-prismjs",
+            resolve: 'gatsby-remark-prismjs',
           },
         ],
       },
@@ -51,12 +52,17 @@ module.exports = {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-139549818-1',
-        head: true
-      }
+        head: true,
+      },
     },
     `gatsby-plugin-styled-components`,
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `sat10am`,
+      },
+    },
   ],
 };
