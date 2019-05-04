@@ -1,10 +1,9 @@
 const path = require("path");
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const postTemplate = path.resolve(`src/templates/PostTemplate.jsx`);
+  const postTemplate = path.resolve(`./src/templates/PostTemplate.jsx`);
   return graphql(`
     {
       allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
@@ -30,17 +29,4 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
   });
-};
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode });
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    });
-  }
 };

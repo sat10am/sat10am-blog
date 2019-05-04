@@ -3,7 +3,7 @@ path: "/posts/redis-cluster"
 title: Redis Cluster 구축하기
 tags: ["Redis"]
 categories: Redis
-banner: "/images/banner/redis.png"
+banner: ../images/banner/redis.png
 date: 2018-10-21 10:21:57
 author: "Hosung Lim"
 ---

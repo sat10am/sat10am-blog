@@ -3,7 +3,7 @@ path: "/posts/js-closure"
 title: Javascript Closure란?
 date: 2018-09-10 04:50:35
 categories: Javascript
-banner: "/images/banner/js.png"
+banner: ../images/banner/js.png
 tags: ["closure", "javascript"]
 author: "Hosung Lim"
 ---

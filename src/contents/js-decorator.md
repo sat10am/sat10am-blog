@@ -4,7 +4,7 @@ title: Javascript Decorator Pattern
 date: 2018-08-10 22:43:13
 tags: ["design-pattern", "javascript"]
 categories: Javascript 
-banner: "/images/banner/js.png"
+banner: ../images/banner/js.png
 author: "Hosung Lim"
 ---
 Decorator Pattern의 사전적 정의는 아래와 같다. 

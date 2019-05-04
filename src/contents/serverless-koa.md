@@ -2,7 +2,7 @@
 path: "/posts/serverless-koa"
 title: Serverless Koa기반 Api Server 배포하기 
 date: 2018-07-29 00:37:00
-banner: "/images/serverless.png"
+banner: ../images/serverless.png
 tags: ["serverless", "serverless-http"]
 categories:
 - serverless

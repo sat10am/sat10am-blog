@@ -4,7 +4,7 @@ title: JS의 Generator와 Iterator
 date: 2018-09-09 17:43:24
 tags: ["es6", "generator", "iterator", "javascript"]
 categories: Javascript 
-banner: "/images/banner/js.png"
+banner: ../images/banner/js.png
 author: "Hosung Lim"
 ---
 

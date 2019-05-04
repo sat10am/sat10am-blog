@@ -2,7 +2,7 @@
 path: "/posts/tmux-tutorial"
 title: Tmux Tutorial 정리 
 date: 2018-09-27 12:18:51
-banner: "/images/banner/tmux.png"
+banner: ../images/banner/tmux.png
 categories: Tmux
 tags: ["tmux", "tool"]
 author: "Hosung Lim"

@@ -5,17 +5,22 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@rebass/grid": "^6.0.0",
+    "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.34",
     "gatsby-image": "^2.0.41",
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.35",
+    "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-remark-images": "^3.0.11",
     "gatsby-remark-prismjs": "^3.2.8",
+    "gatsby-remark-relative-images": "^0.2.2",
     "gatsby-source-filesystem": "^2.0.33",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.18",
+    "prism-themes": "^1.1.0",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -23,7 +28,8 @@
     "react-icons": "^3.6.1",
     "react-image-gallery": "^0.8.16",
     "styled-components": "^4.2.0",
-    "styled-reset": "^2.0.9"
+    "styled-reset": "^2.0.9",
+    "styled-system": "^4.1.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
@@ -37,8 +43,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "rm -rf public && rm -rf .cache && gatsby build",
+    "develop": "rm -rf .cache && gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

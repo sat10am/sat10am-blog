@@ -2,7 +2,7 @@
 path: "/posts/semantic-ui-react"
 title: Semantic-Ui-React Theme Customizing
 date: 2018-09-10 21:38:56
-banner: "/images/banner/react.jpg"
+banner: ../images/banner/react.jpg
 categories: React
 tags: ["semantic-ui-react", "react"]
 author: "Hosung Lim"

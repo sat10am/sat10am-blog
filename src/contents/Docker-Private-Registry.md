@@ -4,7 +4,7 @@ title: Docker Private Registry 구축하기
 date: 2018-10-20 22:33:51
 tags: ["Docker"]
 categories: Docker
-banner: "/images/banner/docker.png"
+banner: ../images/banner/docker.png
 author: "Hosung Lim"
 ---
 기본적으로 Docker는 Docker Hub라는 공식 Registry를 통해서 이미지를 Push, Pull 할 수 있다.

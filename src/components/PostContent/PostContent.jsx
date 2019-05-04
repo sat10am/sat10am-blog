@@ -34,6 +34,18 @@ const ContentWrapper = styled.div`
     }
   }
 
+  p {
+    code.language-text {
+      background: #eee;
+      color: #4b4b4b;
+      padding: 2px;
+    }
+  }
+
+  a {
+    color: skyblue;
+  }
+
   h1 {
     font-size: 32px;
   }

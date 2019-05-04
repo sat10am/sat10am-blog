@@ -30,7 +30,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/contents`,
+        path: `${__dirname}/src/contents`,
         name: "markdown-pages",
       },
     },
@@ -38,6 +38,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-relative-images`,
           `gatsby-remark-images`,
           {
             resolve: "gatsby-remark-prismjs",
@@ -45,7 +46,8 @@ module.exports = {
         ],
       },
     },
-    "gatsby-transformer-sharp",
+    `gatsby-plugin-styled-components`,
     "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
   ],
 };

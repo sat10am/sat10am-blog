@@ -4,6 +4,7 @@ import ImageGallery from "react-image-gallery";
 import PostCardList from "../components/PostCardList";
 import Layout from "../components/layout";
 import PageHeader from "../components/PageHeader";
+import Container from "../components/Container";
 import SEO from "../components/seo";
 import img1 from "../images/1.jpeg";
 import img2 from "../images/2.jpeg";
@@ -21,10 +22,12 @@ const images = [img1, img2, img3, img4, img5, img6].map(v => ({
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Home" keywords={[`sat10am`, `application`, `react`]} />
     <ImageGallery items={images} />
-    <PageHeader title="Post" />
-    <PostCardList />
+    <Container>
+      <PageHeader title="Post" />
+      <PostCardList />
+    </Container>
   </Layout>
 );
 

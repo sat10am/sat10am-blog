@@ -6,6 +6,7 @@ import { MdAccessTime, MdRemoveRedEye } from "react-icons/md";
 import Layout from "../components/layout";
 import TagList from "../components/TagList";
 import PostContent from "../components/PostContent";
+import Container from "../components/Container";
 
 const PostHeading = styled.h1`
   font-size: 32px;
@@ -33,24 +34,27 @@ const PostTemplate = ({ data }) => {
     markdownRemark: {
       html,
       timeToRead,
-      frontmatter: { title, author, tags, date },
+      frontmatter: { title, tags, date },
     },
   } = data;
   return (
     <Layout>
-      <PostHeading>{title}</PostHeading>
-      <Paragraph>
-        <PostField>
-          <MdAccessTime />
-          <span>{date}</span>
-        </PostField>
-        <PostField>
-          <MdRemoveRedEye />
-          <span>{timeToRead}</span>
-        </PostField>
-      </Paragraph>
-      <PostContent html={html} />
-      <TagList tags={tags} />
+      <div style={{ marginTop: "20px" }} />
+      <Container>
+        <PostHeading>{title}</PostHeading>
+        <Paragraph>
+          <PostField>
+            <MdAccessTime />
+            <span>{date}</span>
+          </PostField>
+          <PostField>
+            <MdRemoveRedEye />
+            <span>{timeToRead}</span>
+          </PostField>
+        </Paragraph>
+        <PostContent html={html} />
+        <TagList tags={tags} />
+      </Container>
     </Layout>
   );
 };

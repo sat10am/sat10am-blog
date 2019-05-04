@@ -2,9 +2,10 @@ import React from "react";
 import TagList from "../TagList";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle, MdAccessTime } from "react-icons/md";
 import stripHtml from "../../utils/stripHtml";
 import Link from "../Link";
+import { Box } from "@rebass/grid";
 
 const PostWrapper = styled.div`
   margin: 0;
@@ -14,6 +15,7 @@ const PostItem = styled.div`
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
+  display: flex;
 `;
 
 const PostItemBody = styled.div`
@@ -27,15 +29,26 @@ const PostItemHeader = styled.h1`
   color: #4b4b4b;
 `;
 
-const ProfileWrapper = styled.div`
+const DescriptionWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const ProfileItem = styled.span`
+const DescriptionItem = styled.span`
   font-size: 12px;
   margin-left: 4px;
   color: #4b4b4b;
+`;
+
+const PostImg = styled.img`
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+`;
+
+const PostImgWrapper = styled.div`
+  width: 250px;
+  margin-right: 10px;
 `;
 
 const PostList = () => (
@@ -52,6 +65,16 @@ const PostList = () => (
                 tags
                 author
                 path
+                date(formatString: "YYYY.MM.DD")
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 250, maxHeight: 200) {
+                      src
+                      srcSet
+                      sizes
+                    }
+                  }
+                }
               }
             }
           }
@@ -67,25 +90,40 @@ const PostList = () => (
               node: {
                 id,
                 html,
-                frontmatter: { title, tags, author, path },
+                frontmatter: { title, date, tags, author, path, banner },
               },
             } = edge;
 
             return (
               <PostItem key={id}>
-                <PostItemHeader>
-                  <Link to={path}>{title}</Link>
-                </PostItemHeader>
-                <TagList tags={tags} />
-                <PostItemBody>
-                  {stripHtml(html)
-                    .slice(0, 300)
-                    .concat("...")}
-                </PostItemBody>
-                <ProfileWrapper>
-                  <MdAccountCircle color="#4b4b4b" />
-                  <ProfileItem>{author}</ProfileItem>
-                </ProfileWrapper>
+                {banner && (
+                  <PostImgWrapper>
+                    <PostImg
+                      style={{ width: "auto" }}
+                      src={banner.childImageSharp.fluid.src}
+                    />
+                  </PostImgWrapper>
+                )}
+                <div>
+                  <PostItemHeader>
+                    <Link to={path}>{title}</Link>
+                  </PostItemHeader>
+                  <TagList tags={tags} />
+                  <PostItemBody>
+                    {stripHtml(html)
+                      .slice(0, 200)
+                      .concat("...")}
+                  </PostItemBody>
+                  <DescriptionWrapper>
+                    <MdAccountCircle color="#4b4b4b" />
+                    <DescriptionItem>{author}</DescriptionItem>
+                  </DescriptionWrapper>
+                  <Box mt="5px" />
+                  <DescriptionWrapper>
+                    <MdAccessTime />
+                    <DescriptionItem>{date}</DescriptionItem>
+                  </DescriptionWrapper>
+                </div>
               </PostItem>
             );
           })}

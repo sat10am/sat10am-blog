@@ -5,7 +5,7 @@ date: 2018-09-28 22:36:10
 categories: Linux
 tags: ["Linux"]
 author: "Hosung Lim"
-banner: "/images/banner/default.jpg"
+banner: ../images/banner/default.jpg
 ---
 
 메일서버를 구축할일이 생겨서 간단하게 Postfix와 Dovecot개념을 익힐겸 구축해보았다. 

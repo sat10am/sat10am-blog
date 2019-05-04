@@ -1,7 +1,7 @@
 ---
 path: "/posts/jenkins-docker"
 title: Jenkins x Docker Tomcat War 배포하기
-banner: "/images/banner/jenkinsxdocker.png"
+banner: ../images/banner/jenkinsxdocker.png
 categories: Docker
 tags: ["Docker", "jenkins"]
 date: 2018-10-22 13:00:15
@@ -16,7 +16,6 @@ Docker를 사용하기 전에는 Maven기반의 프로젝트를 배포할때 보
 이번 포스팅은 Maven기반의 프로젝트를 Dockerizing 후 Jenkins를 통해서 배포하는 Workflow 구축에 대해 소개하려한다.
 
 ## Deploy Flow
-{% asset_img workflow.png 'React LifeCycle Unmounting' %}
 
 1. 개발한 내용을 Git, Svn 에 반영한다.
 2. Jenkins Workspace로 Pull 을 받는다.

@@ -2,7 +2,7 @@
 path: "/posts/react-event-handling"
 title: React Event Handling
 date: 2018-01-03 23:30:05
-banner: "/images/banner/react.jpg"
+banner: ../images/banner/react.jpg
 tags: ["react", "event-handling"]
 categories:
 - React

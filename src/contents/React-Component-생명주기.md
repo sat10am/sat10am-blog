@@ -3,7 +3,7 @@ path: "/posts/react-component-lifecycle"
 title: React Component 생명주기
 tags: ["React"]
 categories: React
-banner: "/images/banner/react.jpg"
+banner: ../images/banner/react.jpg
 date: 2018-01-06 08:53:57
 author: "Hosung Lim"
 ---
@@ -25,7 +25,6 @@ React 에서도 마찬가지로 Component가 <code>생성</code>, <code>수정</
 </div>
 
 ## Component LifeCycle - Mounting
-{% asset_img mounting.png 'React LifeCycle Mounting' %}
 컴포넌트가 생성될때 호출되는 LifeCycle API 이다.
 생성자 메소드의 경우 ES6를 사용하지 않는다면 <code>getInitialState</code> 메소드를 사용하실 수 있고 더 자세한 내용은 React 공식문서 [React Without ES6](https://reactjs.org/docs/react-without-es6.html) 를 참고하도록 하자.
 
@@ -33,7 +32,6 @@ React 에서도 마찬가지로 Component가 <code>생성</code>, <code>수정</
 </div>
 
 ## Component LifeCycle - Updating
-{% asset_img updating.png 'React LifeCycle Updating' %}
 컴포넌트가 생성될때 호출되는 LifeCycle API 이다.
 여기서 *shouldComponentUpdate* 메소드는 중요한 역활을 한다.
 **이 메소드에서 변경된 props와 state를 통해 리렌더링을 할지 여부를 결정하게 되는데 기본적으로 true를 리턴하게 되있는데 false를 리턴할경우 렌더링을 하지 않는다.**
@@ -59,7 +57,6 @@ shouldComponentUpdate( nextProps, nextState ) {
 </div>
 
 ## Component LifeCycle - Unmounting
-{% asset_img unmounting.png 'React LifeCycle Unmounting' %}
 컴포넌트가 소멸될시 호출되는 LifeCycle API입니다.
 위 설명과 같이 타이머 제거, 네트워크 요청취소, 이벤트 리스너 제거등에 주로 사용된다.
 

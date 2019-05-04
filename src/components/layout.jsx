@@ -12,11 +12,14 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
   html, body {
     font-family: 'Noto Sans KR';
-    padding-top: 45px;
   }
   .image-gallery-slide img {
     width: 100%;
-    height: 400px;
+    object-fit: cover;
+    max-height: 600px;
+  }
+  main {
+    padding-top: 60px;
   }
 `;
 
@@ -35,14 +38,7 @@ const Layout = ({ children }) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <GlobalStyle />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 1000,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
+        <div>
           <main>{children}</main>
         </div>
         <Footer />
