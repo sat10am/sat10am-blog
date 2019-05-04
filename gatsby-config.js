@@ -3,6 +3,7 @@ module.exports = {
     title: `SAT10AM`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
+    naverSiteVerification: 'b1076669177dae5b58f7fc5563e631a428968f5f',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
