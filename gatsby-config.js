@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    baseURI: `https://sat10am.dev`,
     title: `SAT10AM`,
+    siteUrl: `https://sat10am.dev`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
     naverSiteVerification: 'b1076669177dae5b58f7fc5563e631a428968f5f',
