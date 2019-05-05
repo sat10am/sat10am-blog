@@ -1,7 +1,11 @@
+const queries = require('./src/utils/algolia');
+
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `SAT10AM`,
-    siteUrl: 'https://sat10am.dev',
+    siteUrl: `https://sat10am.dev`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
     naverSiteVerification: 'b1076669177dae5b58f7fc5563e631a428968f5f',
@@ -66,5 +70,20 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `sat10am`,
+      },
+    },
   ],
 };
