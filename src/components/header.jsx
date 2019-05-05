@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Logo from '../images/sat10am.svg';
 import Link from './Link';
+import Search from './Search';
 
 const HeaderWrapper = styled.header`
   background: #ffffff;
   height: 60px;
-  display: flex;
-  align-items: center;
   box-shadow: 1px 0.5px 1px #ddd;
   position: fixed;
   top: 0;
@@ -18,6 +17,9 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
@@ -38,7 +40,7 @@ const LogoImage = styled.img`
 
 const LogoWrapper = styled.div`
   height: 100%;
-  float: left;
+  flex-basis: 75%;
   display: flex;
   align-items: center;
 `;
@@ -51,9 +53,10 @@ const LogoHeading = styled.h1`
   display: inline-block;
 `;
 
+const SearchWrapper = styled.div``;
+
 const MenuWrapper = styled.div`
   height: 100%;
-  float: right;
   display: flex;
   align-items: center;
 `;
@@ -70,6 +73,11 @@ const MenuItem = styled.li`
   padding: 10px;
   color: #4b4b4b;
 `;
+
+const searchIndices = [
+  // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
+  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+];
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
@@ -93,6 +101,9 @@ const Header = ({ siteTitle }) => (
           </MenuItem>
         </MenuList>
       </MenuWrapper>
+      <SearchWrapper>
+        <Search collapse indices={searchIndices} />
+      </SearchWrapper>
     </HeaderContainer>
   </HeaderWrapper>
 );
