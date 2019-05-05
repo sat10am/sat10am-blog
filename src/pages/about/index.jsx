@@ -6,15 +6,15 @@ import Container from '../../components/Container';
 import Banner from '../../components/Banner';
 import { Box } from '@rebass/grid';
 import PageHeader from '../../components/PageHeader';
-import InfoSection from './InfoSection';
-import ImageGallery from './ImageGallery';
+import ImageGallery from '../../components/AboutPage/ImageGallery';
+import InfoSection from '../../components/AboutPage/InfoSection';
 import {
   PhotoCaption,
   IntroParagraph,
   LogoWrapper,
   AboutLogo,
   Strong,
-} from './styled';
+} from '../../components/AboutPage/styled';
 
 const AboutPage = () => (
   <Layout>
