@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
-import Layout from "../../components/layout";
-import SEO from "../../components/seo";
-import Container from "../../components/Container";
-import PageHeader from "../../components/PageHeader";
-import TagList from "../../components/TagList";
-import { Flex, Box } from "@rebass/grid";
-import { FaCalendar, FaGithub, FaMapMarker } from "react-icons/fa";
-import { MdLabel } from "react-icons/md";
-import members from "../../members.json";
+import styled from 'styled-components';
+import Layout from '../../components/layout';
+import SEO from '../../components/seo';
+import Container from '../../components/Container';
+import PageHeader from '../../components/PageHeader';
+import TagList from '../../components/TagList';
+import Banner from '../../components/Banner';
+import { Flex, Box } from '@rebass/grid';
+import { FaCalendar, FaGithub, FaMapMarker } from 'react-icons/fa';
+import { MdLabel } from 'react-icons/md';
+import members from '../../members.json';
 
 const A = styled.a`
   text-decoration: none;
@@ -29,15 +30,15 @@ const ProfileImg = styled.img`
 
 const PostPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Box mt={20} />
+    <SEO title='Home' keywords={[`gatsby`, `application`, `react`]} />
+    <Banner imagePath='./images/member_cover.jpeg' title='Our Members' />
     <Container>
-      <PageHeader title="Members" />
-      <Flex flexWrap="wrap">
+      <Box mt={40} />
+      <Flex flexWrap='wrap'>
         {members.map(({ name, profile, username, location, skill, join }) => (
           <Box width={1 / 2} p={10}>
             <Flex>
-              <ProfileImg src={profile} alt="profile" />
+              <ProfileImg src={profile} alt='profile' />
               <Box ml={20} mb={20} fontSize={20} flex={2}>
                 <Box mb={10}>
                   <h1>{name}</h1>
@@ -45,25 +46,24 @@ const PostPage = () => (
                 <ul>
                   <ProfileItem>
                     <MdLabel />
-                    <span style={{ marginLeft: "5px" }}>{username}</span>
+                    <span style={{ marginLeft: '5px' }}>{username}</span>
                   </ProfileItem>
                   <ProfileItem>
                     <A
-                      href="https://github.com/y0c"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
+                      href='https://github.com/y0c'
+                      target='_blank'
+                      rel='noreferrer noopener'>
                       <FaGithub />
-                      <span style={{ marginLeft: "5px" }}>Github</span>
+                      <span style={{ marginLeft: '5px' }}>Github</span>
                     </A>
                   </ProfileItem>
                   <ProfileItem>
                     <FaMapMarker />
-                    <span style={{ marginLeft: "5px" }}>{location}</span>
+                    <span style={{ marginLeft: '5px' }}>{location}</span>
                   </ProfileItem>
                   <ProfileItem>
                     <FaCalendar />
-                    <span style={{ marginLeft: "5px" }}>{join}</span>
+                    <span style={{ marginLeft: '5px' }}>{join}</span>
                   </ProfileItem>
                 </ul>
                 <TagList tags={skill} />
