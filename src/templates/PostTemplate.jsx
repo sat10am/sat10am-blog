@@ -1,3 +1,4 @@
+import Disqus from 'gatsby-plugin-disqus';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -13,7 +14,6 @@ const PostHeading = styled.h1`
   font-weight: bold;
 `;
 const Paragraph = styled.p`
-  font-size: 16px;
   margin-top: 30px;
   margin-bottom: 30px;
   color: #4b4b4b;
@@ -29,38 +29,60 @@ const PostField = styled.span`
   }
 `;
 
-const PostTemplate = ({ data }) => {
-  const {
-    markdownRemark: {
+const PostTemplate = class extends React.Component {
+  constructor(props) {
+    super(props);
+    this.siteUrl = props.data.site.siteMetadata;
+    this.markdownRemark = props.data.markdownRemark;
+    this.pathname = null;
+  }
+
+  componentDidMount() {
+    this.pathname = this.pathname || window.location.pathname;
+  }
+
+  render() {
+    const {
+      id,
       html,
       timeToRead,
       frontmatter: { title, tags, date },
-    },
-  } = data;
-  return (
-    <Layout>
-      <div style={{ marginTop: '20px' }} />
-      <Container>
-        <PostHeading>{title}</PostHeading>
-        <Paragraph>
-          <PostField>
-            <MdAccessTime />
-            <span>{date}</span>
-          </PostField>
-          <PostField>
-            <MdRemoveRedEye />
-            <span>{timeToRead}</span>
-          </PostField>
-        </Paragraph>
-        <PostContent html={html} />
-        <TagList tags={tags} />
-      </Container>
-    </Layout>
-  );
+    } = this.markdownRemark;
+    return (
+      <Layout>
+        <div style={{ marginTop: '20px' }} />
+        <Container>
+          <PostHeading>{title}</PostHeading>
+          <Paragraph>
+            <PostField>
+              <MdAccessTime />
+              <span>{date}</span>
+            </PostField>
+            <PostField>
+              <MdRemoveRedEye />
+              <span>{timeToRead}</span>
+            </PostField>
+          </Paragraph>
+          <PostContent html={html} />
+          <TagList tags={tags} />
+          <Disqus
+            identifier={id}
+            title={title}
+            url={`${this.siteUrl}${this.pathname}`}
+          />
+        </Container>
+      </Layout>
+    );
+  }
 };
 
 export const pageQuery = graphql`
   query findPostbyPath($path: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       id
       html

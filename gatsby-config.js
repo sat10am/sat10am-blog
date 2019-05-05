@@ -5,7 +5,7 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `SAT10AM`,
-    siteUrl: 'https://sat10am.dev',
+    siteUrl: `https://sat10am.dev`,
     description: `A Study Blog for SAT10AM`,
     author: `@y0c`,
     naverSiteVerification: 'b1076669177dae5b58f7fc5563e631a428968f5f',
@@ -70,6 +70,12 @@ module.exports = {
         apiKey: process.env.ALGOLIA_ADMIN_KEY,
         queries,
         chunkSize: 10000, // default: 1000
+      },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `sat10am`,
       },
     },
   ],
