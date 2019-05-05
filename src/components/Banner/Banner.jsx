@@ -34,7 +34,11 @@ const Banner = ({ imagePath, title }) => (
 
 Banner.propTypes = {
   imagePath: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};
+
+Banner.defaultProps = {
+  title: '',
 };
 
 export default Banner;
