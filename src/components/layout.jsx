@@ -10,13 +10,9 @@ import Header from "./header";
 const GlobalStyle = createGlobalStyle`
   ${reset} 
   @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+  @import url('https://fonts.googleapis.com/css?family=Exo');
   html, body {
     font-family: 'Noto Sans KR';
-  }
-  .image-gallery-slide img {
-    width: 100%;
-    object-fit: cover;
-    max-height: 600px;
   }
   main {
     padding-top: 60px;
