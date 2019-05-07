@@ -103,12 +103,12 @@ const PostNavigator = ({ previous, next }) => (
 
 PostNavigator.propTypes = {
   previous: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    path: PropTypes.string,
   }),
   next: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    path: PropTypes.string,
   }),
 };
 
