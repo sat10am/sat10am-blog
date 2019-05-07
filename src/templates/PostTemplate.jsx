@@ -74,49 +74,6 @@ const Navigator = styled(Link)`
   }
 `;
 
-const PostNavigator = ({ previous, next }) => (
-  <NavigatorWrapper>
-    <div>
-      {previous && (
-        <Navigator className='prev' to={previous.frontmatter.path}>
-          <MdArrowBack size={24} />
-          <div>
-            <h2>이전 글</h2>
-            <h1>{previous.frontmatter.title}</h1>
-          </div>
-        </Navigator>
-      )}
-    </div>
-    <div>
-      {next && (
-        <Navigator className='next' to={next.frontmatter.path}>
-          <div>
-            <h2>다음 글</h2>
-            <h1>{next.frontmatter.title}</h1>
-          </div>
-          <MdArrowForward size={24} />
-        </Navigator>
-      )}
-    </div>
-  </NavigatorWrapper>
-);
-
-PostNavigator.propTypes = {
-  previous: PropTypes.shape({
-    title: PropTypes.string,
-    path: PropTypes.string,
-  }),
-  next: PropTypes.shape({
-    title: PropTypes.string,
-    path: PropTypes.string,
-  }),
-};
-
-PostNavigator.defaultProps = {
-  previous: {},
-  next: {},
-};
-
 const PostTemplate = (props) => {
   const {
     data: {
@@ -157,7 +114,30 @@ const PostTemplate = (props) => {
         <PostContent html={html} />
         <TagList tags={tags} />
         <Box mt={40} />
-        <PostNavigator previous={previous} next={next} />
+        <NavigatorWrapper>
+          <div>
+            {previous && (
+              <Navigator className='prev' to={previous.frontmatter.path}>
+                <MdArrowBack size={24} />
+                <div>
+                  <h2>이전 글</h2>
+                  <h1>{previous.frontmatter.title}</h1>
+                </div>
+              </Navigator>
+            )}
+          </div>
+          <div>
+            {next && (
+              <Navigator className='next' to={next.frontmatter.path}>
+                <div>
+                  <h2>다음 글</h2>
+                  <h1>{next.frontmatter.title}</h1>
+                </div>
+                <MdArrowForward size={24} />
+              </Navigator>
+            )}
+          </div>
+        </NavigatorWrapper>
         <Box mt={40} />
         <DiscussionEmbed
           config={disqusConfig}
