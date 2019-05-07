@@ -37,6 +37,7 @@
     "react-instantsearch-dom": "^5.5.0",
     "styled-components": "^4.2.0",
     "styled-icons": "^7.11.0",
+    "styled-media-query": "^2.1.1",
     "styled-reset": "^2.0.9",
     "styled-system": "^4.1.0"
   },
