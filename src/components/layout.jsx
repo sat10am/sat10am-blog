@@ -1,11 +1,11 @@
-import React from "react";
-import Footer from "./Footer";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
-import { reset } from "styled-reset";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import Footer from './Footer';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import { reset } from 'styled-reset';
+import { createGlobalStyle } from 'styled-components';
 
-import Header from "./header";
+import Header from './header';
 
 const GlobalStyle = createGlobalStyle`
   ${reset} 
@@ -30,7 +30,7 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <GlobalStyle />
