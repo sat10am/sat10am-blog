@@ -6,9 +6,9 @@ import Link from './Link';
 import Search from './Search';
 
 const HeaderWrapper = styled.header`
-  background: #ffffff;
+  background: #111;
   height: 60px;
-  box-shadow: 1px 0.5px 1px #ddd;
+  //box-shadow: 1px 0.5px 1px #ddd;
   position: fixed;
   top: 0;
   left: 0;
@@ -49,7 +49,7 @@ const LogoHeading = styled.h1`
   font-size: 24px;
   font-weight: 100;
   margin: 0;
-  color: #4b4b4b;
+  color: #ffffff;
   display: inline-block;
 `;
 
@@ -71,7 +71,13 @@ const MenuList = styled.ul`
 const MenuItem = styled.li`
   display: table-cell;
   padding: 10px;
-  color: #4b4b4b;
+`;
+
+const HeaderLink = styled(Link)`
+  color: #ffffff;
+  &:visited {
+    color: #ffffff;
+  }
 `;
 
 const searchIndices = [
@@ -83,21 +89,21 @@ const Header = ({ siteTitle }) => (
   <HeaderWrapper>
     <HeaderContainer>
       <LogoWrapper>
-        <Link to='/'>
+        <HeaderLink to='/'>
           <LogoImage src={Logo} alt='Logo' />
           <LogoHeading>{siteTitle}</LogoHeading>
-        </Link>
+        </HeaderLink>
       </LogoWrapper>
       <MenuWrapper>
         <MenuList>
           <MenuItem>
-            <Link to='/posts'>Posts</Link>
+            <HeaderLink to='/posts'>Posts</HeaderLink>
           </MenuItem>
           <MenuItem>
-            <Link to='/members'>Members</Link>
+            <HeaderLink to='/members'>Members</HeaderLink>
           </MenuItem>
           <MenuItem>
-            <Link to='/about'>About</Link>
+            <HeaderLink to='/about'>About</HeaderLink>
           </MenuItem>
         </MenuList>
       </MenuWrapper>

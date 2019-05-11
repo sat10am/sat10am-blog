@@ -10,6 +10,7 @@ export const Root = styled.div`
 export const SearchIcon = styled(Search)`
   width: 1em;
   pointer-events: none;
+  color: #fff;
 `;
 
 const focussed = css`
@@ -55,6 +56,7 @@ export const Input = styled.input`
   background: transparent;
   transition: ${(props) => props.theme.shortTrans};
   border-radius: ${(props) => props.theme.smallBorderRadius};
+  color: #fff;
   ${(props) => (props.collapse ? collapse : expand)};
 `;
 
