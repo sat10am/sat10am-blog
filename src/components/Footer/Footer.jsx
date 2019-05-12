@@ -14,7 +14,9 @@ const FooterWrapper = styled.footer`
 `;
 
 const Footer = () => (
-  <FooterWrapper>© {new Date().getFullYear()}, Built with @ SAT10AM </FooterWrapper>
+  <FooterWrapper>
+    © {new Date().getFullYear()}, Built with @ SAT10AM{' '}
+  </FooterWrapper>
 );
 
 export default Footer;
