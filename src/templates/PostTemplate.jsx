@@ -10,6 +10,7 @@ import {
   MdArrowForward,
 } from 'react-icons/md';
 import { Box } from '@rebass/grid';
+import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Link from '../components/Link';
 import TagList from '../components/TagList';
@@ -17,15 +18,25 @@ import PostContent from '../components/PostContent';
 import Container from '../components/Container';
 import media from 'styled-media-query';
 
+const PostWrapper = styled.div`
+  margin-bottom: 50px;
+`;
+
+const PostContainer = styled(Container)`
+  max-width: 750px;
+`;
+
 const PostHeading = styled.h1`
   font-size: 32px;
   font-weight: bold;
 `;
 const Paragraph = styled.p`
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
   color: #4b4b4b;
   font-size: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
 `;
 
 const PostField = styled.span`
@@ -88,7 +99,7 @@ const PostTemplate = (props) => {
     id,
     html,
     timeToRead,
-    frontmatter: { title, tags, date },
+    frontmatter: { title, tags, date, banner },
   } = markdownRemark;
 
   const disqusConfig = {
@@ -98,52 +109,56 @@ const PostTemplate = (props) => {
 
   return (
     <Layout>
-      <div style={{ marginTop: '20px' }} />
-      <Container>
-        <PostHeading>{title}</PostHeading>
-        <Paragraph>
-          <PostField>
-            <MdAccessTime />
-            <span>{date}</span>
-          </PostField>
-          <PostField>
-            <MdRemoveRedEye />
-            <span>{timeToRead}</span>
-          </PostField>
-        </Paragraph>
-        <PostContent html={html} />
-        <TagList tags={tags} />
-        <Box mt={40} />
-        <NavigatorWrapper>
-          <div>
-            {previous && (
-              <Navigator className='prev' to={previous.frontmatter.path}>
-                <MdArrowBack size={24} />
-                <div>
-                  <h2>이전 글</h2>
-                  <h1>{previous.frontmatter.title}</h1>
-                </div>
-              </Navigator>
-            )}
-          </div>
-          <div>
-            {next && (
-              <Navigator className='next' to={next.frontmatter.path}>
-                <div>
-                  <h2>다음 글</h2>
-                  <h1>{next.frontmatter.title}</h1>
-                </div>
-                <MdArrowForward size={24} />
-              </Navigator>
-            )}
-          </div>
-        </NavigatorWrapper>
-        <Box mt={40} />
-        <DiscussionEmbed
-          config={disqusConfig}
-          shortname={siteMetadata.shortname}
-        />
-      </Container>
+      <PostContainer>
+        <PostWrapper>
+          <Img fluid={banner.childImageSharp.fluid} />
+          <Box m={40} />
+          <PostHeading>{title}</PostHeading>
+          <Paragraph>
+            <PostField>
+              <MdAccessTime />
+              <span>{date}</span>
+            </PostField>
+            <PostField>
+              <MdRemoveRedEye />
+              <span>{timeToRead}</span>
+            </PostField>
+          </Paragraph>
+          <PostContent html={html} />
+          <Box mt={60} />
+          <TagList tags={tags} />
+          <Box mt={20} />
+          <NavigatorWrapper>
+            <div>
+              {previous && (
+                <Navigator className='prev' to={previous.frontmatter.path}>
+                  <MdArrowBack size={24} />
+                  <div>
+                    <h2>이전 글</h2>
+                    <h1>{previous.frontmatter.title}</h1>
+                  </div>
+                </Navigator>
+              )}
+            </div>
+            <div>
+              {next && (
+                <Navigator className='next' to={next.frontmatter.path}>
+                  <div>
+                    <h2>다음 글</h2>
+                    <h1>{next.frontmatter.title}</h1>
+                  </div>
+                  <MdArrowForward size={24} />
+                </Navigator>
+              )}
+            </div>
+          </NavigatorWrapper>
+          <Box mt={40} />
+          <DiscussionEmbed
+            config={disqusConfig}
+            shortname={siteMetadata.shortname}
+          />
+        </PostWrapper>
+      </PostContainer>
     </Layout>
   );
 };
@@ -167,6 +182,13 @@ export const pageQuery = graphql`
       html
       timeToRead
       frontmatter {
+        banner {
+          childImageSharp {
+            fluid(maxWidth: 1000, maxHeight: 450) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+        }
         path
         date(formatString: "YYYY-MM-DD")
         title
