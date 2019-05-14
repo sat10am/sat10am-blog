@@ -6,9 +6,8 @@ import Link from './Link';
 import Search from './Search';
 
 const HeaderWrapper = styled.header`
-  background: #111;
+  background: #333;
   height: 60px;
-  //box-shadow: 1px 0.5px 1px #ddd;
   position: fixed;
   top: 0;
   left: 0;
