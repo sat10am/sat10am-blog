@@ -9,6 +9,12 @@ const ContentWrapper = styled.div`
     color: #c77532;
   }
 
+  h1,
+  h2,
+  h3 {
+    padding-top: 24px;
+  }
+
   ul,
   ol {
     list-style: initial;
@@ -28,7 +34,7 @@ const ContentWrapper = styled.div`
     }
 
     code.language-text {
-      background: #2b2b2b;
+      background: #171717;
       color: #a9b7c6;
     }
     .line-numbers-rows {
@@ -49,7 +55,7 @@ const ContentWrapper = styled.div`
     border-bottom-right-radius: 3px;
     padding: 1px 5px;
     background: #ffc66d;
-    color: #c77532;
+    color: #aa4c00;
     font-weight: 500;
     z-index: 9;
   }
@@ -65,14 +71,15 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const PostContent = ({ html }) => {
+const PostContent = React.forwardRef(({ html }, ref) => {
   return (
     <ContentWrapper
+      ref={ref}
       className='markdown-body'
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
-};
+});
 
 PostContent.propTypes = {
   html: PropTypes.string.isRequired,
