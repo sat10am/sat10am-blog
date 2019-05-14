@@ -72,12 +72,12 @@ const QuickTableOfContent = ({ headingInfos }) => {
       <Positioner>
         <TableContentList>
           {headingInfos.map((h, i) => (
-            <TableContentListItem>
+            <TableContentListItem key={h.id}>
               <InternalLink
                 href={`#${h.id}`}
                 className={i === activeIndex ? 'active' : ''}>
-                {range(h.level - 1).map(() => (
-                  <Gap />
+                {range(h.level - 1).map((v) => (
+                  <Gap key={v} />
                 ))}
                 {h.text}
               </InternalLink>
