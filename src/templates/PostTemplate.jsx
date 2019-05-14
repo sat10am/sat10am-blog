@@ -181,6 +181,7 @@ const PostTemplate = (props) => {
             config={disqusConfig}
             shortname={siteMetadata.shortname}
           />
+          <Box mt={100} />
         </PostWrapper>
       </PostContainer>
     </Layout>
