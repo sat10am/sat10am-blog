@@ -1,3 +1,1 @@
-import TagList from './TagList';
-
-export default TagList;
+export { default } from './TagList';

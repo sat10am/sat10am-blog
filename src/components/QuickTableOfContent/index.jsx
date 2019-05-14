@@ -1,3 +1,1 @@
-import QuickTableOfContent from './QuickTableOfContent';
-
-export default QuickTableOfContent;
+export { default } from './QuickTableOfContent';

@@ -1,3 +1,1 @@
-import PostProfile from './PostProfile';
-
-export default PostProfile;
+export { default } from './PostProfile';
