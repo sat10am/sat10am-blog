@@ -54,8 +54,11 @@ module.exports = {
         plugins: [
           `gatsby-remark-relative-images`,
           `gatsby-remark-images`,
+          `gatsby-remark-prismjs`,
           {
-            resolve: 'gatsby-remark-prismjs',
+            resolve: `gatsby-remark-autolink-headers`,
+            maintainCase: true,
+            removeAccents: true,
           },
         ],
       },
