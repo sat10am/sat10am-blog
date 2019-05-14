@@ -4,7 +4,7 @@ title: Testing & Refactoring
 date: 2019-04-11 22:35:39
 banner: ../images/banner/banner.png
 tags: ["testing", "refactoring"]
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 필자는 개발을 시작하고 Testing에 대해서 꾸준히 들어왔다. 관련 세미나에 참석해서 내용을 들어 보기도 하고 실무 혹은 사이드 프로젝트를 통해서 적용해 보려고 여러번 시도했다. 시도 할때 마다 느꼈던 점은 어떤 식으로 테스트 코드 작성을 시작해야 될지 막막 했고 작성 하다가도 일정 상의 이유 혹은 관리의 어려움 등의 문제로 좌절 했던 기억이 있다. 더 이상 미루기만 할 수 없다고 생각해서 이번 기회에 테스팅과 리팩토링에 대해서 정리하고 연습 해보려고 한다.

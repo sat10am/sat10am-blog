@@ -5,7 +5,7 @@ tags: ["Redis"]
 categories: Redis
 banner: ../images/banner/redis.png
 date: 2018-10-21 10:21:57
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 최근에 구축한 서버환경 중 Session Clustering과 Cache의 용도로 Redis를 사용한 적이 있다.
@@ -63,14 +63,15 @@ config 파일은 redis설치폴더에 그리고 redis-server파일은 src폴더 
 해당파일을 폴더에 각각 복사하도록 하자.
 
 이때 redis.conf파일에 들어갈 내용은 cluster기본설정만을 포함하고 있다.
-    ```
-    port 7000
-    cluster-enabled yes
-    cluster-node-timeout 5000
-    pidfile /var/run/redis.pid
-    dbfilename dump-cluster00.rdb
-    cluster-config-file nodes.conf
-    ```
+
+```
+port 7000
+cluster-enabled yes
+cluster-node-timeout 5000
+pidfile /var/run/redis.pid
+dbfilename dump-cluster00.rdb
+cluster-config-file nodes.conf
+```
 
 ### Redis Server를 실행한다.
 ```bash

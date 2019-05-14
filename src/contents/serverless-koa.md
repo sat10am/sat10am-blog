@@ -6,7 +6,7 @@ banner: ../images/serverless.png
 tags: ["serverless", "serverless-http"]
 categories:
 - serverless
-author: "Hosung Lim"
+author: "y0c"
 ---
 이 포스팅에선 aws lambda와 serverless framework를 통해서 koa 기반의 api server를 배포하는 것에 대해 소개하려한다. 
 전체적인 배포 과정을 나열하기보다는 간략한 소개와 boilerplate로 어떤식으로 접근하는지에 중점을 두었다. 

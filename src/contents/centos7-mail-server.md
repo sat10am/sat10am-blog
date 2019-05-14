@@ -4,7 +4,7 @@ title: CentOS 7 Mail Server 구축하기 Postfix + Dovecot
 date: 2018-09-28 22:36:10
 categories: Linux
 tags: ["Linux"]
-author: "Hosung Lim"
+author: "y0c"
 banner: ../images/banner/default.jpg
 ---
 

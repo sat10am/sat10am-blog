@@ -6,7 +6,7 @@ banner: ../images/banner/react.jpg
 tags: ["react", "event-handling"]
 categories:
 - React
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 
