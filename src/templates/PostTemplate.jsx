@@ -1,7 +1,8 @@
 import { DiscussionEmbed } from 'disqus-react';
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import map from 'lodash/map';
 import { graphql } from 'gatsby';
 import {
   MdAccessTime,
@@ -15,8 +16,11 @@ import Layout from '../components/layout';
 import Link from '../components/Link';
 import TagList from '../components/TagList';
 import PostContent from '../components/PostContent';
+import PostProfile from '../components/PostProfile';
 import Container from '../components/Container';
+import QuickTableOfContent from '../components/QuickTableOfContent';
 import media from 'styled-media-query';
+import members from '../members';
 
 const PostWrapper = styled.div`
   margin-bottom: 50px;
@@ -24,6 +28,7 @@ const PostWrapper = styled.div`
 
 const PostContainer = styled(Container)`
   max-width: 750px;
+  position: relative;
 `;
 
 const PostHeading = styled.h1`
@@ -99,7 +104,7 @@ const PostTemplate = (props) => {
     id,
     html,
     timeToRead,
-    frontmatter: { title, tags, date, banner },
+    frontmatter: { title, tags, date, banner, author },
   } = markdownRemark;
 
   const disqusConfig = {
@@ -107,11 +112,28 @@ const PostTemplate = (props) => {
     identifier: id,
   };
 
+  const [headingInfos, setHeadingInfos] = useState([]);
+
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const headings = contentRef.current.querySelectorAll('h1, h2, h3');
+    setHeadingInfos(
+      map(headings, (h) => ({
+        top: h.getBoundingClientRect().top,
+        level: h.tagName.slice(1),
+        text: h.innerText,
+        id: h.id,
+      })),
+    );
+  }, []);
+
   return (
     <Layout>
       <PostContainer>
+        <QuickTableOfContent headingInfos={headingInfos} />
         <PostWrapper>
-          <Img fluid={banner.childImageSharp.fluid} />
+          {banner && <Img fluid={banner.childImageSharp.fluid} />}
           <Box m={40} />
           <PostHeading>{title}</PostHeading>
           <Paragraph>
@@ -124,10 +146,12 @@ const PostTemplate = (props) => {
               <span>{timeToRead}</span>
             </PostField>
           </Paragraph>
-          <PostContent html={html} />
-          <Box mt={60} />
+          <PostContent html={html} ref={contentRef} />
+          <Box mt={30} />
           <TagList tags={tags} />
-          <Box mt={20} />
+          <Box mt={30} />
+          <PostProfile member={members.find((m) => m.username === author)} />
+          <Box mt={30} />
           <NavigatorWrapper>
             <div>
               {previous && (
@@ -184,7 +208,7 @@ export const pageQuery = graphql`
       frontmatter {
         banner {
           childImageSharp {
-            fluid(maxWidth: 1000, maxHeight: 450) {
+            fluid(maxWidth: 700, maxHeight: 450) {
               ...GatsbyImageSharpFluid_noBase64
             }
           }

@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ContainerWrapper = styled.div`
   margin: 0 auto;
@@ -8,11 +8,16 @@ const ContainerWrapper = styled.div`
   padding: 0px 1.0875rem 1.45rem;
   padding-top: 0;
 `;
-const Container = ({ children }) => (
-  <ContainerWrapper>{children}</ContainerWrapper>
+const Container = ({ children, className }) => (
+  <ContainerWrapper className={className}>{children}</ContainerWrapper>
 );
 
 Container.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
+Container.defaultProps = {
+  className: '',
 };
 export default Container;
