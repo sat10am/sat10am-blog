@@ -1,7 +1,8 @@
 import { DiscussionEmbed } from 'disqus-react';
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import map from 'lodash/map';
 import { graphql } from 'gatsby';
 import {
   MdAccessTime,
@@ -10,22 +11,37 @@ import {
   MdArrowForward,
 } from 'react-icons/md';
 import { Box } from '@rebass/grid';
+import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Link from '../components/Link';
 import TagList from '../components/TagList';
 import PostContent from '../components/PostContent';
+import PostProfile from '../components/PostProfile';
 import Container from '../components/Container';
+import QuickTableOfContent from '../components/QuickTableOfContent';
 import media from 'styled-media-query';
+import members from '../members';
+
+const PostWrapper = styled.div`
+  margin-bottom: 50px;
+`;
+
+const PostContainer = styled(Container)`
+  max-width: 750px;
+  position: relative;
+`;
 
 const PostHeading = styled.h1`
   font-size: 32px;
   font-weight: bold;
 `;
 const Paragraph = styled.p`
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
   color: #4b4b4b;
   font-size: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
 `;
 
 const PostField = styled.span`
@@ -88,7 +104,7 @@ const PostTemplate = (props) => {
     id,
     html,
     timeToRead,
-    frontmatter: { title, tags, date },
+    frontmatter: { title, tags, date, banner, author },
   } = markdownRemark;
 
   const disqusConfig = {
@@ -96,54 +112,78 @@ const PostTemplate = (props) => {
     identifier: id,
   };
 
+  const [headingInfos, setHeadingInfos] = useState([]);
+
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const headings = contentRef.current.querySelectorAll('h1, h2, h3');
+    setHeadingInfos(
+      map(headings, (h) => ({
+        top: h.getBoundingClientRect().top,
+        level: h.tagName.slice(1),
+        text: h.innerText,
+        id: h.id,
+      })),
+    );
+  }, []);
+
   return (
     <Layout>
-      <div style={{ marginTop: '20px' }} />
-      <Container>
-        <PostHeading>{title}</PostHeading>
-        <Paragraph>
-          <PostField>
-            <MdAccessTime />
-            <span>{date}</span>
-          </PostField>
-          <PostField>
-            <MdRemoveRedEye />
-            <span>{timeToRead}</span>
-          </PostField>
-        </Paragraph>
-        <PostContent html={html} />
-        <TagList tags={tags} />
-        <Box mt={40} />
-        <NavigatorWrapper>
-          <div>
-            {previous && (
-              <Navigator className='prev' to={previous.frontmatter.path}>
-                <MdArrowBack size={24} />
-                <div>
-                  <h2>이전 글</h2>
-                  <h1>{previous.frontmatter.title}</h1>
-                </div>
-              </Navigator>
-            )}
-          </div>
-          <div>
-            {next && (
-              <Navigator className='next' to={next.frontmatter.path}>
-                <div>
-                  <h2>다음 글</h2>
-                  <h1>{next.frontmatter.title}</h1>
-                </div>
-                <MdArrowForward size={24} />
-              </Navigator>
-            )}
-          </div>
-        </NavigatorWrapper>
-        <Box mt={40} />
-        <DiscussionEmbed
-          config={disqusConfig}
-          shortname={siteMetadata.shortname}
-        />
-      </Container>
+      <PostContainer>
+        <QuickTableOfContent headingInfos={headingInfos} />
+        <PostWrapper>
+          {banner && <Img fluid={banner.childImageSharp.fluid} />}
+          <Box m={40} />
+          <PostHeading>{title}</PostHeading>
+          <Paragraph>
+            <PostField>
+              <MdAccessTime />
+              <span>{date}</span>
+            </PostField>
+            <PostField>
+              <MdRemoveRedEye />
+              <span>{timeToRead}</span>
+            </PostField>
+          </Paragraph>
+          <PostContent html={html} ref={contentRef} />
+          <Box mt={30} />
+          <TagList tags={tags} />
+          <Box mt={30} />
+          <PostProfile member={members.find((m) => m.username === author)} />
+          <Box mt={30} />
+          <NavigatorWrapper>
+            <div>
+              {previous && (
+                <Navigator className='prev' to={previous.frontmatter.path}>
+                  <MdArrowBack size={24} />
+                  <div>
+                    <h2>이전 글</h2>
+                    <h1>{previous.frontmatter.title}</h1>
+                  </div>
+                </Navigator>
+              )}
+            </div>
+            <div>
+              {next && (
+                <Navigator className='next' to={next.frontmatter.path}>
+                  <div>
+                    <h2>다음 글</h2>
+                    <h1>{next.frontmatter.title}</h1>
+                  </div>
+                  <MdArrowForward size={24} />
+                </Navigator>
+              )}
+            </div>
+          </NavigatorWrapper>
+          <Box mt={40} />
+          <DiscussionEmbed
+            config={disqusConfig}
+            shortname={siteMetadata.shortname}
+          />
+          <Box mt={100} />
+        </PostWrapper>
+      </PostContainer>
     </Layout>
   );
 };
@@ -167,6 +207,13 @@ export const pageQuery = graphql`
       html
       timeToRead
       frontmatter {
+        banner {
+          childImageSharp {
+            fluid(maxWidth: 700, maxHeight: 450) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
+          }
+        }
         path
         date(formatString: "YYYY-MM-DD")
         title

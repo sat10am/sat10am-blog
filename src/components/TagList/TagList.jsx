@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { MdLocalOffer } from "react-icons/md";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { MdLocalOffer } from 'react-icons/md';
 
 const TagWrapper = styled.div`
   display: flex;
@@ -12,7 +12,8 @@ const TagWrapper = styled.div`
 
 const TagItem = styled.span`
   display: inline-block;
-  background: skyblue;
+  background: #ffc66d;
+  color: #aa4c00;
   font-size: 10px;
   padding: 5px;
   margin-right: 3px;
@@ -21,8 +22,8 @@ const TagItem = styled.span`
 
 const TagList = ({ tags }) => (
   <TagWrapper>
-    <MdLocalOffer style={{ marginRight: "5px" }} />
-    {tags.map(tag => (
+    <MdLocalOffer style={{ marginRight: '5px' }} />
+    {tags.map((tag) => (
       <TagItem key={tag}>{tag}</TagItem>
     ))}
   </TagWrapper>

@@ -5,7 +5,7 @@ date: 2018-10-20 22:33:51
 tags: ["Docker"]
 categories: Docker
 banner: ../images/banner/docker.png
-author: "Hosung Lim"
+author: "y0c"
 ---
 기본적으로 Docker는 Docker Hub라는 공식 Registry를 통해서 이미지를 Push, Pull 할 수 있다.
 하지만 공개적으로 노출시킬 이미지가 아니라면 Private Registry를 별도로 구축해서 이용해야한다.

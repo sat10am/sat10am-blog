@@ -5,7 +5,7 @@ tags: ["React"]
 categories: React
 banner: ../images/banner/react.jpg
 date: 2018-01-06 08:53:57
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 

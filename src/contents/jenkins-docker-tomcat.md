@@ -5,7 +5,7 @@ banner: ../images/banner/jenkinsxdocker.png
 categories: Docker
 tags: ["Docker", "jenkins"]
 date: 2018-10-22 13:00:15
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 요즘의 소프트웨어 개발은 어떻게 만들까도 많이 고민하지만 어떻게 운영하고 유지보수 할 것인가? 에 대한 고민을 많이 하는것 같다. 어플리케이션 구현보다는 운영에 초점이 맞춰지는 것이다.  소프트웨어 개발을 분석/개발/테스트/배포/운영 의 단계로 나눈다면 배포/운영을 뜻한다. 필자는 생산성에 있어서 굉장히 관심이 많은 편인데 개발을 하면서 지속적으로 느끼는점이 배포/운영에 대한 정확한 프로세스가 정확히 구축되어있지 않으면 추후에 많은 생산성 낭비를 가져올 수 있다는 것이다.
@@ -16,6 +16,8 @@ Docker를 사용하기 전에는 Maven기반의 프로젝트를 배포할때 보
 이번 포스팅은 Maven기반의 프로젝트를 Dockerizing 후 Jenkins를 통해서 배포하는 Workflow 구축에 대해 소개하려한다.
 
 ## Deploy Flow
+
+![workflow](/static/posts/workflow.png)
 
 1. 개발한 내용을 Git, Svn 에 반영한다.
 2. Jenkins Workspace로 Pull 을 받는다.
