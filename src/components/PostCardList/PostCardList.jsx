@@ -1,11 +1,11 @@
-import React from "react";
-import TagList from "../TagList";
-import styled from "styled-components";
-import { StaticQuery, graphql } from "gatsby";
-import { MdAccessTime, MdAccountCircle } from "react-icons/md";
-import stripHtml from "../../utils/stripHtml";
-import Link from "../Link";
-import { Box } from "@rebass/grid";
+import React from 'react';
+import TagList from '../TagList';
+import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+import { MdAccessTime, MdAccountCircle } from 'react-icons/md';
+import stripHtml from '../../utils/stripHtml';
+import Link from '../Link';
+import { Box } from '@rebass/grid';
 const PostWrapper = styled.div`
   margin: 0;
   display: flex;
@@ -89,11 +89,11 @@ const PostCardList = () => (
         }
       }
     `}
-    render={data => {
+    render={(data) => {
       const { allMarkdownRemark } = data;
       return (
         <PostWrapper>
-          {allMarkdownRemark.edges.map(edge => {
+          {allMarkdownRemark.edges.map((edge) => {
             const {
               node: {
                 id,
@@ -104,7 +104,7 @@ const PostCardList = () => (
             return (
               <PostItemWrapper key={id}>
                 <PostItem>
-                  <PostImg src={banner.childImageSharp.fluid.src} alt="img" />
+                  <PostImg src={banner.childImageSharp.fluid.src} alt='img' />
                   <PostItemHeader>
                     <Link to={path}>{title}</Link>
                   </PostItemHeader>
@@ -112,13 +112,13 @@ const PostCardList = () => (
                   <PostItemBody>
                     {stripHtml(html)
                       .slice(0, 50)
-                      .concat("...")}
+                      .concat('...')}
                   </PostItemBody>
                   <DescriptionWrapper>
-                    <MdAccountCircle color="#4b4b4b" />
+                    <MdAccountCircle color='#4b4b4b' />
                     <DescriptionItem>{author}</DescriptionItem>
                   </DescriptionWrapper>
-                  <Box mt="5px" />
+                  <Box mt='5px' />
                   <DescriptionWrapper>
                     <MdAccessTime />
                     <DescriptionItem>{date}</DescriptionItem>

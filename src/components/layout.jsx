@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { reset } from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
-
 import Header from './header';
 
 const GlobalStyle = createGlobalStyle`
