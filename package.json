@@ -16,6 +16,7 @@
     "gatsby-plugin-algolia": "^0.3.0",
     "gatsby-plugin-google-analytics": "^2.0.19",
     "gatsby-plugin-manifest": "^2.0.29",
+    "gatsby-plugin-netlify-cms": "^4.0.1",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.35",
@@ -30,6 +31,7 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "github-markdown-css": "^3.0.1",
     "lodash": "^4.17.11",
+    "netlify-cms-app": "^2.9.1",
     "prism-themes": "^1.1.0",
     "prismjs": "^1.16.0",
     "react": "^16.8.6",
@@ -49,6 +51,7 @@
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^2.2.0",
+    "netlify-identity-widget": "^1.5.2",
     "prettier": "^1.17.0",
     "prop-types": "^15.7.2"
   },
