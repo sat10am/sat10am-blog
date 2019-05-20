@@ -32,8 +32,7 @@ const HeaderContainer = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 140px;
   margin-right: 10px;
 `;
 
@@ -90,7 +89,6 @@ const Header = ({ siteTitle }) => (
       <LogoWrapper>
         <HeaderLink to='/'>
           <LogoImage src={Logo} alt='Logo' />
-          <LogoHeading>{siteTitle}</LogoHeading>
         </HeaderLink>
       </LogoWrapper>
       <MenuWrapper>
