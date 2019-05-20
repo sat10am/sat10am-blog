@@ -56,7 +56,6 @@ module.exports = {
         name: 'markdown-pages',
       },
     },
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
