@@ -6,6 +6,8 @@ import { MdAccessTime, MdAccountCircle } from 'react-icons/md';
 import stripHtml from '../../utils/stripHtml';
 import Link from '../Link';
 import { Box } from '@rebass/grid';
+import Img from 'gatsby-image';
+
 const PostWrapper = styled.div`
   margin: 0;
   display: flex;
@@ -50,7 +52,12 @@ const DescriptionItem = styled.span`
   color: #4b4b4b;
 `;
 
-const PostImg = styled.img`
+const PostImgWrapper = styled.div`
+  width: 300px;
+  margin-right: 10px;
+`;
+
+const PostImg = styled(Img)`
   width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -60,28 +67,30 @@ const PostCardList = () => (
   <StaticQuery
     query={graphql`
       query IndexQuery {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          limit: 8
-        ) {
+        allPost(sort: { order: DESC, fields: [publishAt] }, limit: 8) {
           edges {
             node {
               id
-              html
-              frontmatter {
-                title
-                tags
-                author
-                path
-                date(formatString: "YYYY.MM.DD")
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 400, maxHeight: 300) {
-                      src
-                      srcSet
-                      sizes
-                    }
+              title
+              childMarkdownRemark {
+                html
+              }
+              tags {
+                name
+              }
+              slug
+              publishAt(formatString: "YYYY.MM.DD")
+              thumbnail {
+                childImageSharp {
+                  fixed(width: 300, height: 200) {
+                    ...GatsbyImageSharpFixed
                   }
+                }
+              }
+              author {
+                username
+                profile {
+                  url
                 }
               }
             }
@@ -90,25 +99,34 @@ const PostCardList = () => (
       }
     `}
     render={(data) => {
-      const { allMarkdownRemark } = data;
+      const { allPost } = data;
       return (
         <PostWrapper>
-          {allMarkdownRemark.edges.map((edge) => {
+          {allPost.edges.map((edge) => {
             const {
               node: {
                 id,
-                html,
-                frontmatter: { title, tags, author, path, banner, date },
+                title,
+                childMarkdownRemark: { html },
+                slug,
+                publishAt,
+                thumbnail,
+                tags,
+                author,
               },
             } = edge;
             return (
               <PostItemWrapper key={id}>
                 <PostItem>
-                  <PostImg src={banner.childImageSharp.fluid.src} alt='img' />
+                  {thumbnail && (
+                    <PostImgWrapper>
+                      <PostImg fixed={thumbnail.childImageSharp.fixed} />
+                    </PostImgWrapper>
+                  )}
                   <PostItemHeader>
-                    <Link to={path}>{title}</Link>
+                    <Link to={slug}>{title}</Link>
                   </PostItemHeader>
-                  <TagList tags={tags} />
+                  <TagList tags={tags.map((t) => t.name)} />
                   <PostItemBody>
                     {stripHtml(html)
                       .slice(0, 50)
@@ -116,12 +134,12 @@ const PostCardList = () => (
                   </PostItemBody>
                   <DescriptionWrapper>
                     <MdAccountCircle color='#4b4b4b' />
-                    <DescriptionItem>{author}</DescriptionItem>
+                    <DescriptionItem>{author.username}</DescriptionItem>
                   </DescriptionWrapper>
                   <Box mt='5px' />
                   <DescriptionWrapper>
                     <MdAccessTime />
-                    <DescriptionItem>{date}</DescriptionItem>
+                    <DescriptionItem>{publishAt}</DescriptionItem>
                   </DescriptionWrapper>
                 </PostItem>
               </PostItemWrapper>
