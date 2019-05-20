@@ -80,7 +80,9 @@ const PostProfile = ({ member }) => (
 
 PostProfile.propTypes = {
   member: PropTypes.shape({
-    profile: PropTypes.string.isRequired,
+    profile: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+    }),
     username: PropTypes.string.isRequired,
     intro: PropTypes.string.isRequired,
   }).isRequired,

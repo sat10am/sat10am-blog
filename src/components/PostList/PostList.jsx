@@ -97,7 +97,6 @@ const PostList = () => (
           {allPost.edges.map((edge) => {
             const {
               node: {
-                id,
                 title,
                 childMarkdownRemark: { html },
                 slug,
@@ -109,7 +108,7 @@ const PostList = () => (
             } = edge;
 
             return (
-              <PostItem key={id}>
+              <PostItem key={slug}>
                 {thumbnail && (
                   <PostImgWrapper>
                     <PostImg fixed={thumbnail.childImageSharp.fixed} />
