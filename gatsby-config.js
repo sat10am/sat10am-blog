@@ -27,6 +27,14 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://13.125.182.174`,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`post`, `user`, `archive`],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
