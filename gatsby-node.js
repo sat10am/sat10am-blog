@@ -1,21 +1,20 @@
 const path = require('path');
+const crypto = require('crypto');
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const postTemplate = path.resolve(`./src/templates/PostTemplate.jsx`);
   return graphql(`
-    {
-      allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    query {
+      allPost(sort: { order: DESC, fields: [publishAt] }) {
         edges {
           previous {
             id
           }
           node {
             id
-            frontmatter {
-              path
-            }
+            slug
           }
           next {
             id
@@ -28,10 +27,10 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors);
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ previous, node, next }) => {
+    result.data.allPost.edges.forEach(({ previous, node, next }) => {
       const { id } = node;
       createPage({
-        path: node.frontmatter.path,
+        path: node.slug,
         component: postTemplate,
         context: {
           id,
@@ -43,4 +42,29 @@ exports.createPages = ({ actions, graphql }) => {
       });
     });
   });
+};
+
+const digest = (data) => {
+  return crypto
+    .createHash(`md5`)
+    .update(JSON.stringify(data))
+    .digest(`hex`);
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNode } = actions;
+  if (node.internal.type === 'StrapiPost') {
+    createNode({
+      ...node,
+      id: `${node.id}-markdown`,
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'Post',
+        mediaType: 'text/markdown',
+        content: node.content,
+        contentDigest: digest(node),
+      },
+    });
+  }
 };

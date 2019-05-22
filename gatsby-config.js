@@ -27,6 +27,14 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: process.env.STRAPI_ENDPOINT,
+        queryLimit: 1000, // Default to 100
+        contentTypes: [`post`, `user`, `archive`],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -48,7 +56,6 @@ module.exports = {
         name: 'markdown-pages',
       },
     },
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

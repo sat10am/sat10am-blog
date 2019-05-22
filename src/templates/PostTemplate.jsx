@@ -20,7 +20,6 @@ import PostProfile from '../components/PostProfile';
 import Container from '../components/Container';
 import QuickTableOfContent from '../components/QuickTableOfContent';
 import media from 'styled-media-query';
-import members from '../members';
 
 const PostWrapper = styled.div`
   margin-bottom: 50px;
@@ -94,7 +93,7 @@ const PostTemplate = (props) => {
   const {
     data: {
       site: { siteMetadata },
-      markdownRemark,
+      post,
       previous,
       next,
     },
@@ -102,10 +101,14 @@ const PostTemplate = (props) => {
 
   const {
     id,
-    html,
-    timeToRead,
-    frontmatter: { title, tags, date, banner, author },
-  } = markdownRemark;
+    title,
+    childMarkdownRemark: { html },
+    view,
+    publishAt,
+    thumbnail,
+    author,
+    tags,
+  } = post;
 
   const disqusConfig = {
     title,
@@ -133,43 +136,43 @@ const PostTemplate = (props) => {
       <PostContainer>
         <QuickTableOfContent headingInfos={headingInfos} />
         <PostWrapper>
-          {banner && <Img fluid={banner.childImageSharp.fluid} />}
+          {thumbnail && <Img fluid={thumbnail.childImageSharp.fluid} />}
           <Box m={40} />
           <PostHeading>{title}</PostHeading>
           <Paragraph>
             <PostField>
               <MdAccessTime />
-              <span>{date}</span>
+              <span>{publishAt}</span>
             </PostField>
             <PostField>
               <MdRemoveRedEye />
-              <span>{timeToRead}</span>
+              <span>{view}</span>
             </PostField>
           </Paragraph>
           <PostContent html={html} ref={contentRef} />
           <Box mt={30} />
-          <TagList tags={tags} />
+          <TagList tags={tags.map((t) => t.name)} />
           <Box mt={30} />
-          <PostProfile member={members.find((m) => m.username === author)} />
+          <PostProfile member={author} />
           <Box mt={30} />
           <NavigatorWrapper>
             <div>
               {previous && (
-                <Navigator className='prev' to={previous.frontmatter.path}>
+                <Navigator className='prev' to={previous.slug}>
                   <MdArrowBack size={24} />
                   <div>
                     <h2>이전 글</h2>
-                    <h1>{previous.frontmatter.title}</h1>
+                    <h1>{previous.title}</h1>
                   </div>
                 </Navigator>
               )}
             </div>
             <div>
               {next && (
-                <Navigator className='next' to={next.frontmatter.path}>
+                <Navigator className='next' to={next.slug}>
                   <div>
                     <h2>다음 글</h2>
-                    <h1>{next.frontmatter.title}</h1>
+                    <h1>{next.title}</h1>
                   </div>
                   <MdArrowForward size={24} />
                 </Navigator>
@@ -202,46 +205,51 @@ export const pageQuery = graphql`
         shortname
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    post(id: { eq: $id }) {
       id
-      html
-      timeToRead
-      frontmatter {
-        banner {
-          childImageSharp {
-            fluid(maxWidth: 700, maxHeight: 450) {
-              ...GatsbyImageSharpFluid_noBase64
-            }
+      title
+      view
+      slug
+      publishAt(formatString: "YYYY.MM.DD")
+      tags {
+        name
+      }
+      childMarkdownRemark {
+        html
+      }
+      author {
+        username
+        intro
+        email
+        githubUrl
+        profile {
+          url
+        }
+      }
+      thumbnail {
+        childImageSharp {
+          fluid(maxWidth: 700, maxHeight: 450) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
-        path
-        date(formatString: "YYYY-MM-DD")
-        title
-        tags
-        author
       }
     }
 
-    previous: markdownRemark(id: { eq: $previousId })
-      @include(if: $hasPrevious) {
-      frontmatter {
-        title
-        path
-      }
+    previous: post(id: { eq: $previousId }) @include(if: $hasPrevious) {
+      title
+      slug
     }
 
-    next: markdownRemark(id: { eq: $nextId }) @include(if: $hasNext) {
-      frontmatter {
-        title
-        path
-      }
+    next: post(id: { eq: $nextId }) @include(if: $hasNext) {
+      title
+      slug
     }
   }
 `;
 
 PostTemplate.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    strapiPost: PropTypes.shape({
       id: PropTypes.string,
     }),
   }),
