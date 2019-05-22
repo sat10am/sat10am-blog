@@ -64,7 +64,7 @@ const PostHit = (clickHandler) => ({ hit }) => (
         {hit.tags.map((tag, index) => (
           <Fragment key={tag}>
             {index > 0 && ', '}
-            <HitLink to={`posts/` + tag.toLowerCase().replace(` `, `-`)}>
+            <HitLink to={`/posts/${tag.toLowerCase().replace(` `, `-`)}`}>
               {tag}
             </HitLink>
           </Fragment>
