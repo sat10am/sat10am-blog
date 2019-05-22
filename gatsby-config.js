@@ -30,7 +30,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://13.125.182.174`,
+        apiURL: process.env.STRAPI_ENDPOINT,
         queryLimit: 1000, // Default to 100
         contentTypes: [`post`, `user`, `archive`],
       },
