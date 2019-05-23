@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@hot-loader/react-dom": "^16.8.6",
     "@rebass/grid": "^6.0.0",
     "algoliasearch": "^3.32.1",
     "babel-plugin-styled-components": "^1.10.0",
