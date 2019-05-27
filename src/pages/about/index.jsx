@@ -5,11 +5,8 @@ import SEO from '../../components/seo';
 import Container from '../../components/Container';
 import Banner from '../../components/Banner';
 import { Box } from '@rebass/grid';
-import PageHeader from '../../components/PageHeader';
-import ImageGallery from '../../components/AboutPage/ImageGallery';
 import InfoSection from '../../components/AboutPage/InfoSection';
 import {
-  PhotoCaption,
   IntroParagraph,
   LogoWrapper,
   AboutLogo,
@@ -35,16 +32,6 @@ const AboutPage = () => (
       <Box mt={40} />
       <InfoSection />
       <Box mt={60} />
-      <PageHeader title='Photos' />
-      <ImageGallery />
-      <Box mt={40} />
-      <PhotoCaption>
-        <span role='img' aria-label='emoji'>
-          👨‍👩‍👧‍👦
-        </span>
-        51 Labors Hackerton - 2019.05.01
-      </PhotoCaption>
-      <Box mt={40} />
     </Container>
   </Layout>
 );
