@@ -59,11 +59,8 @@ const PostProfile = ({ member }) => (
         <li>
           <ProfileDescription>
             <GoMarkGithub />
-            <a
-              href={member.githubUrl}
-              target='_blank'
-              rel='noreferrer noopener'>
-              {member.githubUrl}
+            <a href={member.github} target='_blank' rel='noreferrer noopener'>
+              {member.github}
             </a>
           </ProfileDescription>
         </li>
@@ -85,6 +82,7 @@ PostProfile.propTypes = {
     }),
     username: PropTypes.string.isRequired,
     intro: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
   }).isRequired,
 };
 

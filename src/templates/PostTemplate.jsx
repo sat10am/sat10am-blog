@@ -221,7 +221,7 @@ export const pageQuery = graphql`
         username
         intro
         email
-        githubUrl
+        github
         profile {
           url
         }

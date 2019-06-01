@@ -11,6 +11,7 @@ const TagWrapper = styled.div`
 `;
 
 const TagItem = styled.span`
+  line-height: 12px;
   display: inline-block;
   background: #ffc66d;
   color: #aa4c00;

@@ -32,7 +32,7 @@ module.exports = {
       options: {
         apiURL: process.env.STRAPI_ENDPOINT,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`post`, `user`, `archive`],
+        contentTypes: [`post`, `author`, `archive`],
       },
     },
     `gatsby-transformer-sharp`,
