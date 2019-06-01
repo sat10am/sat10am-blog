@@ -85,6 +85,20 @@ const searchIndices = [
   // { name: `Pages`, title: `Pages`, hitComp: `PageHit` },
   { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
 ];
+const menuItems = [
+  {
+    label: 'About',
+    path: '/about',
+  },
+  {
+    label: 'Posts',
+    path: '/posts',
+  },
+  {
+    label: 'Members',
+    path: '/members',
+  },
+];
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
@@ -96,30 +110,16 @@ const Header = ({ siteTitle }) => (
       </LogoWrapper>
       <MenuWrapper>
         <MenuList>
-          <MenuItem>
-            <HeaderLink
-              to='/posts'
-              activeClassName='active'
-              partiallyActive={true}>
-              Posts
-            </HeaderLink>
-          </MenuItem>
-          <MenuItem>
-            <HeaderLink
-              to='/members'
-              activeClassName='active'
-              partiallyActive={true}>
-              Members
-            </HeaderLink>
-          </MenuItem>
-          <MenuItem>
-            <HeaderLink
-              to='/about'
-              activeClassName='active'
-              partiallyActive={true}>
-              About
-            </HeaderLink>
-          </MenuItem>
+          {menuItems.map(({ label, path }) => (
+            <MenuItem key={path}>
+              <HeaderLink
+                to={path}
+                activeClassName='active'
+                partiallyActive={true}>
+                {label}
+              </HeaderLink>
+            </MenuItem>
+          ))}
         </MenuList>
       </MenuWrapper>
       <SearchWrapper>
