@@ -76,6 +76,9 @@ const HeaderLink = styled(Link)`
   &:visited {
     color: #ffffff;
   }
+  &.active {
+    color: #ffdf44;
+  }
 `;
 
 const searchIndices = [
@@ -94,13 +97,28 @@ const Header = ({ siteTitle }) => (
       <MenuWrapper>
         <MenuList>
           <MenuItem>
-            <HeaderLink to='/posts'>Posts</HeaderLink>
+            <HeaderLink
+              to='/posts'
+              activeClassName='active'
+              partiallyActive={true}>
+              Posts
+            </HeaderLink>
           </MenuItem>
           <MenuItem>
-            <HeaderLink to='/members'>Members</HeaderLink>
+            <HeaderLink
+              to='/members'
+              activeClassName='active'
+              partiallyActive={true}>
+              Members
+            </HeaderLink>
           </MenuItem>
           <MenuItem>
-            <HeaderLink to='/about'>About</HeaderLink>
+            <HeaderLink
+              to='/about'
+              activeClassName='active'
+              partiallyActive={true}>
+              About
+            </HeaderLink>
           </MenuItem>
         </MenuList>
       </MenuWrapper>
