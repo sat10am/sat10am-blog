@@ -41,7 +41,7 @@ const IntroText = styled.pre`
   color: #555;
 `;
 
-const PostPage = () => {
+const MembersPage = () => {
   const memberData = useStaticQuery(graphql`
     query findAllMember {
       allStrapiAuthor {
@@ -121,4 +121,4 @@ const PostPage = () => {
   );
 };
 
-export default PostPage;
+export default MembersPage;

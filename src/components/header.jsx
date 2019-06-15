@@ -95,6 +95,10 @@ const menuItems = [
     path: '/posts',
   },
   {
+    label: 'Archives',
+    path: '/archives',
+  },
+  {
     label: 'Members',
     path: '/members',
   },
@@ -112,10 +116,7 @@ const Header = ({ siteTitle }) => (
         <MenuList>
           {menuItems.map(({ label, path }) => (
             <MenuItem key={path}>
-              <HeaderLink
-                to={path}
-                activeClassName='active'
-                partiallyActive={true}>
+              <HeaderLink to={path} activeClassName='active' partiallyActive>
                 {label}
               </HeaderLink>
             </MenuItem>
