@@ -5,7 +5,7 @@ date: 2018-09-27 12:18:51
 banner: ../images/banner/tmux.png
 categories: Tmux
 tags: ["tmux", "tool"]
-author: "Hosung Lim"
+author: "y0c"
 ---
 필자는 Editor중 Vim을 선호하고 주로 사용하는 편이다. 
 

@@ -1,22 +1,17 @@
-import React from "react";
-import Footer from "./Footer";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
-import { reset } from "styled-reset";
-import { createGlobalStyle } from "styled-components";
-
-import Header from "./header";
+import React from 'react';
+import Footer from './Footer';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import { reset } from 'styled-reset';
+import { createGlobalStyle } from 'styled-components';
+import Header from './header';
 
 const GlobalStyle = createGlobalStyle`
   ${reset} 
   @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+  @import url('https://fonts.googleapis.com/css?family=Exo');
   html, body {
     font-family: 'Noto Sans KR';
-  }
-  .image-gallery-slide img {
-    width: 100%;
-    object-fit: cover;
-    max-height: 600px;
   }
   main {
     padding-top: 60px;
@@ -34,7 +29,7 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <GlobalStyle />

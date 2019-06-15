@@ -1,11 +1,12 @@
-import React from "react";
-import TagList from "../TagList";
-import styled from "styled-components";
-import { StaticQuery, graphql } from "gatsby";
-import { MdAccountCircle, MdAccessTime } from "react-icons/md";
-import stripHtml from "../../utils/stripHtml";
-import Link from "../Link";
-import { Box } from "@rebass/grid";
+import React from 'react';
+import TagList from '../TagList';
+import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+import { MdAccountCircle, MdAccessTime } from 'react-icons/md';
+import stripHtml from '../../utils/stripHtml';
+import Link from '../Link';
+import { Box } from '@rebass/grid';
+import Img from 'gatsby-image';
 
 const PostWrapper = styled.div`
   margin: 0;
@@ -40,7 +41,7 @@ const DescriptionItem = styled.span`
   color: #4b4b4b;
 `;
 
-const PostImg = styled.img`
+const PostImg = styled(Img)`
   width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -51,28 +52,36 @@ const PostImgWrapper = styled.div`
   margin-right: 10px;
 `;
 
+const PostContentWrapper = styled.div`
+  flex: 2;
+`;
+
 const PostList = () => (
   <StaticQuery
     query={graphql`
-      query PostListQuery {
-        allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+      query {
+        allPost(sort: { order: DESC, fields: [publishAt] }) {
           edges {
             node {
-              id
-              html
-              frontmatter {
-                title
-                tags
-                author
-                path
-                date(formatString: "YYYY.MM.DD")
-                banner {
-                  childImageSharp {
-                    fluid(maxWidth: 250, maxHeight: 200) {
-                      src
-                      srcSet
-                      sizes
-                    }
+              title
+              childMarkdownRemark {
+                html
+              }
+              slug
+              publishAt(formatString: "YYYY.MM.DD")
+              tags {
+                name
+              }
+              author {
+                username
+                profile {
+                  url
+                }
+              }
+              thumbnail {
+                childImageSharp {
+                  fixed(width: 250, height: 200) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }
@@ -81,49 +90,50 @@ const PostList = () => (
         }
       }
     `}
-    render={data => {
-      const { allMarkdownRemark } = data;
+    render={(data) => {
+      const { allPost } = data;
       return (
         <PostWrapper>
-          {allMarkdownRemark.edges.map(edge => {
+          {allPost.edges.map((edge) => {
             const {
               node: {
-                id,
-                html,
-                frontmatter: { title, date, tags, author, path, banner },
+                title,
+                childMarkdownRemark: { html },
+                slug,
+                tags,
+                thumbnail,
+                author,
+                publishAt,
               },
             } = edge;
 
             return (
-              <PostItem key={id}>
-                {banner && (
+              <PostItem key={slug}>
+                {thumbnail && (
                   <PostImgWrapper>
-                    <PostImg
-                      style={{ width: "auto" }}
-                      src={banner.childImageSharp.fluid.src}
-                    />
+                    <PostImg fixed={thumbnail.childImageSharp.fixed} />
                   </PostImgWrapper>
                 )}
-                <div>
+                <PostContentWrapper>
                   <PostItemHeader>
-                    <Link to={path}>{title}</Link>
+                    <Link to={slug}>{title}</Link>
                   </PostItemHeader>
-                  <TagList tags={tags} />
+                  <TagList tags={tags.map((t) => t.name)} />
                   <PostItemBody>
                     {stripHtml(html)
                       .slice(0, 200)
-                      .concat("...")}
+                      .concat('...')}
                   </PostItemBody>
                   <DescriptionWrapper>
-                    <MdAccountCircle color="#4b4b4b" />
-                    <DescriptionItem>{author}</DescriptionItem>
+                    <MdAccountCircle color='#4b4b4b' />
+                    <DescriptionItem>{author.username}</DescriptionItem>
                   </DescriptionWrapper>
-                  <Box mt="5px" />
+                  <Box mt='5px' />
                   <DescriptionWrapper>
                     <MdAccessTime />
-                    <DescriptionItem>{date}</DescriptionItem>
+                    <DescriptionItem>{publishAt}</DescriptionItem>
                   </DescriptionWrapper>
-                </div>
+                </PostContentWrapper>
               </PostItem>
             );
           })}

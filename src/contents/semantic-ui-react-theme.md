@@ -5,7 +5,7 @@ date: 2018-09-10 21:38:56
 banner: ../images/banner/react.jpg
 categories: React
 tags: ["semantic-ui-react", "react"]
-author: "Hosung Lim"
+author: "y0c"
 ---
 `semantic-ui-react`는 `semantic-ui` 를 react로 구현한 라이브러리이다. 
 react로 프로젝트를 하게되면 ui kit으로 `semantic-ui-react`를 많이 사용되고 있다. 한 번 사용해본 후기로는 다양한 형태의 UI Component를 지원해서 UI를 구현하는데 걸리는 시간을 많이 단축시켜 생산성을 올려준다. 하지만 사용하다 보면 테마를 변경해야하거나 Component Style을 변경하고 싶을때가 있다. 

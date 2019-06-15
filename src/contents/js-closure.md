@@ -5,7 +5,7 @@ date: 2018-09-10 04:50:35
 categories: Javascript
 banner: ../images/banner/js.png
 tags: ["closure", "javascript"]
-author: "Hosung Lim"
+author: "y0c"
 ---
 
 javascript 를 공부하다보면 closure라는 개념을 자연스럽게 접하게 된다. 

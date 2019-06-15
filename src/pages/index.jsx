@@ -1,31 +1,26 @@
-import React from "react";
+import React from 'react';
+import dayjs from 'dayjs';
+import PostCardList from '../components/PostCardList';
+import Layout from '../components/layout';
+import PageHeader from '../components/PageHeader';
+import Container from '../components/Container';
+import Banner from '../components/Banner';
+import SEO from '../components/seo';
+import { Box } from '@rebass/grid';
 
-import ImageGallery from "react-image-gallery";
-import PostCardList from "../components/PostCardList";
-import Layout from "../components/layout";
-import PageHeader from "../components/PageHeader";
-import Container from "../components/Container";
-import SEO from "../components/seo";
-import img1 from "../images/1.jpeg";
-import img2 from "../images/2.jpeg";
-import img3 from "../images/3.jpeg";
-import img4 from "../images/4.jpeg";
-import img5 from "../images/5.jpeg";
-import img6 from "../images/6.jpeg";
-
-import "react-image-gallery/styles/css/image-gallery.css";
-
-const images = [img1, img2, img3, img4, img5, img6].map(v => ({
-  original: v,
-  thumbnail: v,
-}));
+const START_DATE = '2018-06-30';
+const delta = dayjs().diff(dayjs(START_DATE), 'day');
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`sat10am`, `application`, `react`]} />
-    <ImageGallery items={images} />
+    <SEO title='Home' keywords={[`sat10am`, `application`, `react`]} />
+    <Banner
+      imagePath='./images/main_cover.jpg'
+      title={`WE ARE LIVING D+${delta} DAYS FROM 2018.06.30`}
+    />
     <Container>
-      <PageHeader title="Post" />
+      <Box mt={40} />
+      <PageHeader title='Post' />
       <PostCardList />
     </Container>
   </Layout>

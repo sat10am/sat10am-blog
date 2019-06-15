@@ -5,10 +5,10 @@ date: 2018-09-09 17:43:24
 tags: ["es6", "generator", "iterator", "javascript"]
 categories: Javascript 
 banner: ../images/banner/js.png
-author: "Hosung Lim"
+author: "y0c"
 ---
 
-# ES6의 Generator와 Iterator
+## ES6의 Generator와 Iterator
 이번 포스팅에선 ES6의 Generator와 Iterable, Iterator에 대해서 다뤄보려고 한다. Generator를 살펴보기 전에 먼저 Iterable과 Iterator에 대해서 이해하고 넘어가도록 하자. 
 
 사실 요즘 왠만한 언어들은 반복(loop)에 대해서 추상화된 방법과 인터페이스를 제공하고 있다. Java를 예로들면 Iterator라는 인터페이스를 제공하고 있다.  이런식의 반복(loop)을 추상화된 인터페이스로 제공할경우 얻을 수 있는 장점은 내장반복이 있는 `Array`나 `Map` 과 다르게 사용자 정의 Object나 기본 반복동작이 없는 객체들도 `for...of` 문으로 동일하게 반복을 정의할 수 있다는 것이다. 
