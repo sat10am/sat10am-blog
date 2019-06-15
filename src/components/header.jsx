@@ -97,6 +97,9 @@ const Header = ({ siteTitle }) => (
             <HeaderLink to='/posts'>Posts</HeaderLink>
           </MenuItem>
           <MenuItem>
+            <HeaderLink to='/archives'>Archive</HeaderLink>
+          </MenuItem>
+          <MenuItem>
             <HeaderLink to='/members'>Members</HeaderLink>
           </MenuItem>
           <MenuItem>
